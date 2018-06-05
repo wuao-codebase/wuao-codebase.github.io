@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #49d141;
+  background: #ff7ff7;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2971,6 +2971,9 @@ hr {
 .footer-inner {
   text-align: center;
 }
+.page-post-detail .sidebar-toggle-line {
+  background: #f9f9f9;
+}
 .site-author-name {
   margin: 24px 0 0;
 }
@@ -2979,6 +2982,9 @@ hr {
 }
 .post-toc ol a:hover {
   color: #7784ba;
+}
+.nav-link {
+  border-bottom: none;
 }
 .post-button {
   margin-top: 30px;
