@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #201f7f;
+  background: #49d141;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2949,6 +2949,12 @@ hr {
 .ds-top-threads li a:hover {
   border-left: 8px solid #4d768c;
 }
+.header {
+  border-top-color: #fa7d3c;
+  border-top-style: solid;
+  border-top-width: 2px;
+  box-shadow: rgba(0,0,0,0.3) 0px 0px 1px 0px, rgba(0,0,0,0.15) 0px 0px 6px 2px;
+}
 .menu .menu-item a {
   font-size: 14px;
   color: #0f2e41;
@@ -2973,9 +2979,6 @@ hr {
 }
 .post-toc ol a:hover {
   color: #7784ba;
-}
-.sidebar-nav .sidebar-nav-active:hover {
-  color: #37596c;
 }
 .post-button {
   margin-top: 30px;
