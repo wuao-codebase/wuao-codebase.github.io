@@ -1918,7 +1918,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #5b2694;
+  background: #0fffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3062,6 +3062,14 @@ hr {
 }
 .footer-inner {
   text-align: center;
+}
+.sidebar {
+  background: url("https://i.loli.net/2018/06/07/5b18e7a562849.jpg") no-repeat !important;
+  background-size: cover !important;
+  position: fixed !important;
+  right: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
 }
 .page-post-detail .sidebar-toggle-line {
   background: #f9f9f9;
