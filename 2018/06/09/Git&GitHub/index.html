@@ -128,7 +128,8 @@
 <meta property="og:image" content="https://i.loli.net/2018/06/09/5b1bcf2bac4b8.png">
 <meta property="og:image" content="https://i.loli.net/2018/06/09/5b1bcf2bae753.png">
 <meta property="og:image" content="https://i.loli.net/2018/06/09/5b1bcf2babc8c.png">
-<meta property="og:updated_time" content="2018-06-09T13:08:07.235Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/09/5b1be366bfd13.png">
+<meta property="og:updated_time" content="2018-06-10T07:36:59.363Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git&amp;GitHub">
 <meta name="twitter:description" content="Git&amp;amp;GitHub 分布式版本管理工具">
@@ -426,7 +427,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  250
+                  1,085
                 </span>
               
 
@@ -442,7 +443,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  5
                 </span>
               
             </div>
@@ -499,8 +500,51 @@
 </ul>
 </li>
 </ol>
-<h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p><a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a>下载，安装基本上就是一直下一步，安装路径一般设为非中文路径。<br><img src="https://i.loli.net/2018/06/09/5b1bcf2a6f178.png" alt="TIM截图20180609205349.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2ae6ebc.png" alt="TIM截图20180609205519.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2b3fc6b.png" alt="TIM截图20180609205633.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2b96435.png" alt="TIM截图20180609205702.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2bac4b8.png" alt="TIM截图20180609205735.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2bae753.png" alt="TIM截图20180609205814.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2babc8c.png" alt="TIM截图20180609205825.png"></p>
-
+<h1 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h1><p><a href="https://git-scm.com/" target="_blank" rel="noopener">官网</a>下载，安装基本上就是一直下一步，安装路径一般设为非中文路径。<br><img src="https://i.loli.net/2018/06/09/5b1bcf2a6f178.png" alt="TIM截图20180609205349.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2ae6ebc.png" alt="TIM截图20180609205519.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2b3fc6b.png" alt="TIM截图20180609205633.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2b96435.png" alt="TIM截图20180609205702.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2bac4b8.png" alt="TIM截图20180609205735.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2bae753.png" alt="TIM截图20180609205814.png"><br><img src="https://i.loli.net/2018/06/09/5b1bcf2babc8c.png" alt="TIM截图20180609205825.png"><br>验证成功：右击-&gt;Git Base Here-&gt;输入 <code>git -version</code>。以后这就是Git工作终端。</p>
+<h1 id="Git结构"><a href="#Git结构" class="headerlink" title="Git结构"></a>Git结构</h1><p><img src="https://i.loli.net/2018/06/09/5b1be366bfd13.png" alt="TIM截图20180609222517.png"></p>
+<h1 id="Git命令"><a href="#Git命令" class="headerlink" title="Git命令"></a>Git命令</h1><p>Git集成了Linux命令，用着很方便。  </p>
+<h2 id="初始化本地仓库"><a href="#初始化本地仓库" class="headerlink" title="初始化本地仓库"></a>初始化本地仓库</h2><ul>
+<li><p>本地仓库也就是我们项目，在项目根目录(如F:\workspace_idea\gittest)下打开Git终端</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init   <span class="comment">#创建.git隐藏配置文件夹</span></span><br><span class="line">Initialized empty Git repository <span class="keyword">in</span> F:/workspace_idea/gittest/.git/</span><br></pre></td></tr></table></figure>
+<p>   注意：.git包含本地项目的相关信息，不要乱动</p>
+</li>
+</ul>
+<h2 id="设置签名"><a href="#设置签名" class="headerlink" title="设置签名"></a>设置签名</h2><ul>
+<li>用于区别开发人员身份。</li>
+<li><p>项目级别签名(局部设置，优先级高于用户级签名，保存在.git/config中)</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config user.name tom  <span class="comment">#用户名</span></span><br><span class="line">$ git config user.email tom_email  <span class="comment">#邮箱</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用户级别签名(一般使用全局设置就可以了，保存在~/.gitconfig)。</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config -global user.name tom  <span class="comment">#用户名</span></span><br><span class="line">$ git config -global user.email tom_email  <span class="comment">#邮箱</span></span><br></pre></td></tr></table></figure>
+<p>  注意：这里的用户名和邮箱和Github账号不同，可以使用不一样的。</p>
+</li>
+</ul>
+<h2 id="操作命令"><a href="#操作命令" class="headerlink" title="操作命令"></a>操作命令</h2><ul>
+<li><p><strong>git status</strong> 查看工作区，暂存区状态，如文件提交情况</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br><span class="line">On branch master</span><br><span class="line"></span><br><span class="line">No commits yet</span><br><span class="line"></span><br><span class="line">Untracked files:</span><br><span class="line">  (use <span class="string">"git add &lt;file&gt;..."</span> to include <span class="keyword">in</span> what will be committed)</span><br><span class="line"></span><br><span class="line">        text.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git add [file name]</strong> 添加新建/修改的文件到暂存区</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add text.txt</span><br><span class="line">$ git add .  <span class="comment">#添加所有文件</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git rm –cached [file name]</strong> 删除暂存区文件</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm --cached text.txt</span><br><span class="line">rm <span class="string">'text.txt'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git commit [file name]”</strong> 提交缓存区文件到本地仓库</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"第一次提交"</span> <span class="comment">#这里不加提交信息的话会进入vim编辑器再行添加</span></span><br><span class="line">$ git commit -a -m <span class="string">"第二次提交"</span> <span class="comment">#对于修改/删除的文件可以不用add直接-a提交。</span></span><br><span class="line">$ git commit --amend <span class="comment">#修改已提交的注释。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git commit [file name]”</strong> 提交缓存区文件到本地仓库</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git commit -m <span class="string">"第一次提交"</span> <span class="comment">#这里不加提交信息的话会进入vim编辑器再行添加</span></span><br><span class="line">$ git commit -a -m <span class="string">"第二次提交"</span> <span class="comment">#对于修改/删除的文件可以不用add直接-a提交。</span></span><br><span class="line">$ git commit --amend <span class="comment">#修改已提交的注释。</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>git log</strong> 查看历史信息</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">log</span> <span class="comment">#显示当前及历史版本信息</span></span><br><span class="line">commit 6a6f2f675b0d6e629de7d2d233129b242fbbb61c (HEAD -&gt; master)</span><br><span class="line">Author: tom &lt;tom_email&gt;</span><br><span class="line">Date:   Sat Jun 9 23:07:20 2018 +0800</span><br><span class="line"></span><br><span class="line">    第二次提交</span><br><span class="line"></span><br><span class="line">commit 19392cf1b1a88f07c607faf3d07ccfe659f822c2</span><br><span class="line">Author: tom &lt;tom_email&gt;</span><br><span class="line">Date:   Sat Jun 9 22:54:17 2018 +0800</span><br><span class="line"></span><br><span class="line">    第一次提交</span><br><span class="line">    </span><br><span class="line">$ git <span class="built_in">log</span> --pretty=oneline <span class="comment">#单行显示</span></span><br><span class="line">$ git <span class="built_in">log</span> --oneline <span class="comment">#显示局部哈希值</span></span><br><span class="line"></span><br><span class="line">$ git reflog <span class="comment">#查看所有版本信息，最好用。</span></span><br></pre></td></tr></table></figure>
+<p>  注意：commit由哈希算法生成的版本唯一索引值，也是版本管理的关键。</p>
+</li>
+<li><p><strong>git reset</strong> 版本控制</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ git reflog</span><br><span class="line">cb5b6b6 (HEAD -&gt; master) HEAD@&#123;0&#125;: commit: 第三次提交  <span class="comment">#指针所在位置</span></span><br><span class="line">6a6f2f6 HEAD@&#123;1&#125;: commit: 第二次提交</span><br><span class="line">19392cf HEAD@&#123;2&#125;: commit (amend):  第一次提交 <span class="comment">#准备恢复的版本</span></span><br><span class="line"></span><br><span class="line">$ git reset --hard 19392cf</span><br><span class="line">HEAD is now at 19392cf 第一次提交</span><br><span class="line"></span><br><span class="line">$ git reflog  </span><br><span class="line">19392cf (HEAD -&gt; master) HEAD@&#123;0&#125;: reset: moving to 19392cf</span><br><span class="line">cb5b6b6 HEAD@&#123;1&#125;: commit: 第三次提交</span><br><span class="line">6a6f2f6 HEAD@&#123;2&#125;: commit: 第二次提交</span><br><span class="line">19392cf (HEAD -&gt; master) HEAD@&#123;3&#125;: commit (amend): 第一次提交 <span class="comment">#内容已经改变</span></span><br><span class="line"></span><br><span class="line">$ git reset --hard cb5b6b6 <span class="comment">#同理恢复到第三次提交</span></span><br><span class="line"></span><br><span class="line">$ git reset --hard HEAD^ <span class="comment">#回退n个版本，n为^的个数，HEAD只能回退。</span></span><br><span class="line"></span><br><span class="line">$ git reset --hard HEAD~2 <span class="comment">#回退2个版本</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<pre><code>---待更新---
+</code></pre>
       
     </div>
     
@@ -530,7 +574,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/06/08/Java知识点/" rel="next" title="thinking in Java知识点">
+              <a href="/2018/06/08/thinking in Java知识点/" rel="next" title="thinking in Java知识点">
                 <i class="fa fa-chevron-left"></i> thinking in Java知识点
               </a>
             
@@ -715,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工具功能"><span class="nav-number">1.</span> <span class="nav-text">工具功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git安装"><span class="nav-number">2.</span> <span class="nav-text">Git安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#工具功能"><span class="nav-number">1.</span> <span class="nav-text">工具功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git安装"><span class="nav-number">2.</span> <span class="nav-text">Git安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git结构"><span class="nav-number">3.</span> <span class="nav-text">Git结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git命令"><span class="nav-number">4.</span> <span class="nav-text">Git命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化本地仓库"><span class="nav-number">4.1.</span> <span class="nav-text">初始化本地仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置签名"><span class="nav-number">4.2.</span> <span class="nav-text">设置签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作命令"><span class="nav-number">4.3.</span> <span class="nav-text">操作命令</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -771,7 +815,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共2.5k字</span>
+  <span class="post-count">博客全站共3.4k字</span>
 </div> 
 
 
