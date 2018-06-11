@@ -118,7 +118,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/06/09/5b1be366bfd13.png">
 <meta property="og:image" content="https://i.loli.net/2018/06/11/5b1e381e3ab7d.png">
 <meta property="og:image" content="https://i.loli.net/2018/06/11/5b1e43d4ec9cd.png">
-<meta property="og:updated_time" content="2018-06-11T10:33:41.548Z">
+<meta property="og:updated_time" content="2018-06-11T10:43:52.208Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git&amp;GitHub">
 <meta name="twitter:description" content="Git&amp;amp;GitHub 分布式版本管理工具">
@@ -416,7 +416,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,971
+                  1,972
                 </span>
               
 
@@ -571,7 +571,7 @@
 <h2 id="将内容推送到仓库"><a href="#将内容推送到仓库" class="headerlink" title="将内容推送到仓库"></a>将内容推送到仓库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br><span class="line"><span class="comment">#输入账号密码，首次上传由于仓库初始化生成有文件，使用下列命令解决。</span></span><br><span class="line"></span><br><span class="line">$ git pull --rebase origin master </span><br><span class="line"><span class="comment">#拉取远程仓库内容使本地仓库以远程仓库为基础进行修改，再重新推送。</span></span><br></pre></td></tr></table></figure>
 <h2 id="克隆仓库"><a href="#克隆仓库" class="headerlink" title="克隆仓库"></a>克隆仓库</h2><p>将完整拷贝远程仓库，并完成初始化配置(地址别名设置)<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> [仓库地址]</span><br></pre></td></tr></table></figure></p>
 <h2 id="邀请团队成员"><a href="#邀请团队成员" class="headerlink" title="邀请团队成员"></a>邀请团队成员</h2><p>在仓库设置界面，协作者标签填写队友账号，生成邀请链接发给队友就可以了。<br><img src="https://i.loli.net/2018/06/11/5b1e43d4ec9cd.png" alt="TIM截图20180611174128.png"></p>
-<h2 id="拉取远程仓库内容"><a href="#拉取远程仓库内容" class="headerlink" title="拉取远程仓库内容"></a>拉取远程仓库内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin master <span class="comment">#只抓取远程仓库内容，不合并。通过切换到origin/master分支查看下载内容。</span></span><br><span class="line"></span><br><span class="line">$ git merge origin/master <span class="comment">#拉取的内容合并到本地仓库</span></span><br><span class="line"></span><br><span class="line">$ git pull origin master  <span class="comment">#相当于以上两个操作。</span></span><br></pre></td></tr></table></figure>
+<h2 id="拉取远程仓库内容"><a href="#拉取远程仓库内容" class="headerlink" title="拉取远程仓库内容"></a>拉取远程仓库内容</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin master <span class="comment">#只抓取远程仓库内容，不合并。</span></span><br><span class="line">                          <span class="comment">#通过切换到origin/master分支查看下载内容。</span></span><br><span class="line"></span><br><span class="line">$ git merge origin/master <span class="comment">#拉取的内容合并到本地仓库</span></span><br><span class="line"></span><br><span class="line">$ git pull origin master  <span class="comment">#相当于以上两个操作。</span></span><br></pre></td></tr></table></figure>
 <h2 id="冲突问题"><a href="#冲突问题" class="headerlink" title="冲突问题"></a>冲突问题</h2><p>若不是基于远程仓库最新版的修改，远程仓库不接受推送。假设远程仓库基础版本为X1,a提交了新东西版本变为X2，b在提交的话会被拒绝。解决方法。</p>
 <ul>
 <li>拉取仓库合并，再行提交。</li>
