@@ -108,10 +108,12 @@
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
 <meta property="og:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T12:18:05.226Z">
+<meta property="og:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
+<meta property="og:updated_time" content="2018-06-19T03:36:25.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thinking in Java知识点(7~12章)">
 <meta name="twitter:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
+<meta name="twitter:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
 
 
 
@@ -405,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  30
+                  4,045
                 </span>
               
 
@@ -421,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  14
                 </span>
               
             </div>
@@ -444,6 +446,130 @@
       
         <div class="note info"><p>作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”</p></div>
 <a id="more"></a>
+<h1 id="复用类"><a href="#复用类" class="headerlink" title="复用类"></a>复用类</h1><p>复用代码是Java众多引人注目的功能之一。</p>
+<ol>
+<li>只需在新的类中产生现有类的对象。 由于新的类是由现有类的对象所组成，所以这种方法称为<strong>组合</strong>。</li>
+<li>它按照现有类的类型来创建新类。 无需改变现有类的形式，采用现有类的形式并在其中添加新代码。这种神奇的方式称为<strong>继承</strong>。</li>
+</ol>
+<h2 id="Override注解"><a href="#Override注解" class="headerlink" title="@Override注解"></a>@Override注解</h2><p>Java SE5新增加了@Override注解，可以把它当作关键字来用，它的作用是告诉编译器我想重写这个方法，因为Java不会产生名称屏蔽，所以如果我不留心重载了，编译器就会报错来告诉我违背了我的初衷。</p>
+<h2 id="在组合与继承之间选择"><a href="#在组合与继承之间选择" class="headerlink" title="在组合与继承之间选择"></a>在组合与继承之间选择</h2><ul>
+<li>组合技术通常用于想在新类中使用现有类的功能而非它的接口这种情形。  </li>
+<li>继承的时候意味着你在使用一个通用类，并为了某种特殊需要而将其特殊化。  </li>
+<li>到底是该用组合还是用继承，一个最清晰的判断办法就是问一问自己是否需要从新类向基类进行向上转型。如果必须向上转型，则继承是必要的。</li>
+</ul>
+<h2 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h2><p>final的含义指的是“<strong>这是无法改变的。</strong>”</p>
+<ul>
+<li><p>final数据</p>
+<ul>
+<li>final 基本类型数据：将向编译器告之此变量是恒定不变的，即它是编译期常量。这样编译器可在编译时执行计算式。</li>
+<li>final 对象引用：用于对象引用，则引用恒定不变，即一旦引用初始化指向一个对象，就无法再把它改变为指向另一个引用，但对象其自身是可以被修改的。</li>
+<li>final 参数：意味着方法内只能读而不能修改参数，这一特性主要用来向匿名内部类传递数据。</li>
+</ul>
+</li>
+<li><p>final方法：锁定方法，以防任何继承类修改它的含义。这是出于设计的考虑。</p>
+<ul>
+<li><strong>final和private关键字</strong>：类中所有的private方法都隐式地指定为是final的。由于无法取用private方法，所以也就无法覆盖它。</li>
+</ul>
+</li>
+<li>final类：因为final类禁止继承，所以final类中所有的方法都隐式指定为是final的。</li>
+</ul>
+<h2 id="初始化及类加载"><a href="#初始化及类加载" class="headerlink" title="初始化及类加载"></a>初始化及类加载</h2><p>java每个类的编译代码都存在于它自己的独立的文件中（.class文件）。该文件只在其代码需要被使用时才会被加载（类是在其任何static成员被访问时加载的）</p>
+<p><strong>初始化：</strong></p>
+<ul>
+<li><strong>类加载时：</strong> 初始化父类静态代码块-&gt;初始化子类静态代码块</li>
+<li>在其他任何事物发生之前，将分配给对象的存储空间初始化成二进制的零。</li>
+<li><strong>实例化时：</strong><br>初始化父类非静态代码块-&gt;调用父类构造函数-&gt;初始化子类非静态代码块-&gt;调用子类构造函数</li>
+</ul>
+<h1 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h1><p>多态（也称作动态绑定、后期绑定或运行时绑定）。</p>
+<h2 id="方法调用绑定（Method-call-binding"><a href="#方法调用绑定（Method-call-binding" class="headerlink" title="方法调用绑定（Method-call binding"></a>方法调用绑定（Method-call binding</h2><p>将一个方法调用与一个方法主体关联起来称作绑定。</p>
+<ul>
+<li><p>若在程序执行前进行绑定（如果有的话，由编译器和连接程序实现），叫做<strong>前期绑定</strong>。java中static方法和final方法（private方法属于final方法）为前期绑定，其他所有的方法都是后期绑定。</p>
+</li>
+<li><p><strong>后期绑定</strong>，就是在运行时根据对象的类型进行绑定。后期绑定也叫做动态绑定或运行时绑定。</p>
+</li>
+</ul>
+<h1 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h1><p>接口和内部类为我们提供了－种将接口与实现分商的更加结构化的方法。</p>
+<h2 id="抽象类和抽象方法（abstract）"><a href="#抽象类和抽象方法（abstract）" class="headerlink" title="抽象类和抽象方法（abstract）"></a>抽象类和抽象方法（abstract）</h2><ul>
+<li><strong>抽象类不能实例化</strong>，即不能通过new生成对象，但注意可以追加{}生成匿名实现类，仍然不是它自己的实例化。</li>
+<li><strong>抽象类可以有构造函数</strong>，但不能直接调用，通常由实现类构造函数调用。</li>
+<li><strong>抽象类中可以没有抽象方法</strong>，即可以全部是含方法体的非抽象方法，<strong>有抽象方法的必须是抽象类</strong>。</li>
+<li>抽象方法用public和protected修饰，不能用private，不宜用默认修饰符。</li>
+</ul>
+<h2 id="接口（interface）"><a href="#接口（interface）" class="headerlink" title="接口（interface）"></a>接口（interface）</h2><p>抽象类进一步抽象，即为接口。</p>
+<ul>
+<li><strong>接口可以包含域，且隐式地为public static final</strong>，显然，接口中的域不能是空final，这些域不是接口的一部分，它们存储在该接口的静态存储区域内。</li>
+<li>接口关键字interface前可以添加public修饰符，不加默认是包访问权限，</li>
+<li><strong>接口的方法默认都是public abstract方法</strong>。</li>
+<li>因为Java接口没有任何具体实现，即没有任何与接口相关的存储，因此可以<strong>定义一个Java类来implements多个接口</strong>，达到C++中多重继承的效果。</li>
+<li>Java可以定义一个接口去extends另外的一个或多个接口来实现接口的扩展。</li>
+</ul>
+<h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>可以将一个类的定义披在另一个类的定义内部．这就是内部类。</p>
+<h2 id="链接到外部类"><a href="#链接到外部类" class="headerlink" title="链接到外部类"></a>链接到外部类</h2><p>非static的普通内部类自动拥有对其外围类所有成员的访问权。在Java中，当某个类创建一个内部类对象时，此内部类对象必定会秘密地捕获一个指向那个外围类的对象的引用。然后，在你访问此外围类的成员时，就是用那个引用来选择外围类的成员。</p>
+<h2 id="使用-this-与-new"><a href="#使用-this-与-new" class="headerlink" title="使用.this 与 .new"></a>使用.this 与 .new</h2><ul>
+<li>Java非static的普通内部类可用<code>外部类.this</code>返回其外围对象的引用。</li>
+<li>外围对象可用<code>外部类.new</code>来生成一个内部类对象。</li>
+</ul>
+<h2 id="在方法和作用域内的内部类"><a href="#在方法和作用域内的内部类" class="headerlink" title="在方法和作用域内的内部类"></a>在方法和作用域内的内部类</h2><p>可以在一个方法里面或者在任意的作用域内定义内部类。这么做有两个理由：</p>
+<ol>
+<li>如前所示，你实现了某类型的接口，于是可以创建并返回对其的引用。</li>
+<li>你要解决一个复杂的问题，想创建一个类来辅助你的解决方案，但是又不希望这个类是公共可用的。</li>
+</ol>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Contents <span class="title">contents</span><span class="params">()</span> </span>&#123; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Contents() &#123; </span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> i= <span class="number">11</span>; </span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> i; &#125; </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>“创建一个继承自Contents的匿名类的对象。”通过new表达式返回的引用被自动向上转型为对Contents的引用。</p>
+<h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><p>内部类声明为static时，不再包含外围对象的引用.this，称为嵌套类（与C++嵌套类大致相似，只不过在C++中那些类不能访问私有成员，而在Java中可以访问）。 </p>
+<ul>
+<li>创建嵌套类，不需要外围对象。 </li>
+<li>不能从嵌套类的对象中访问非静态的外围对象。</li>
+</ul>
+<h2 id="接口内部的类"><a href="#接口内部的类" class="headerlink" title="接口内部的类"></a>接口内部的类</h2><p>嵌套类可以作为接口的一部分（正常情况下，接口内部不能放置任何代码）。放到接口中的任何类都自动是public和static的。因为类是static的，只是将嵌套类置于接口的命名空间内，这并不违反接口的规则</p>
+<h2 id="从多层嵌套类中访问外部类的成员"><a href="#从多层嵌套类中访问外部类的成员" class="headerlink" title="从多层嵌套类中访问外部类的成员"></a>从多层嵌套类中访问外部类的成员</h2><p>内部类被嵌套多少层并不重要——它能透明地访问它所嵌入的外围类的所有成员。</p>
+<h2 id="为什么需要内部类"><a href="#为什么需要内部类" class="headerlink" title="为什么需要内部类"></a>为什么需要内部类</h2><ul>
+<li>内部类继承自某个类或实现某个接口，内部类的代码操作创建它的外围类的对象。所以可以认为内部类提供了某种进入其外围类的窗口。</li>
+<li>内部类实现一个接口与外围类实现这个接口有什么区别呢？答案是：后者不是总能享用到接口带来的方便，有时需要用到接口的实现。所以，使用内部类最吸引人的原因是： <ul>
+<li><strong>每个内部类都能独立地继承自一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。</strong></li>
+</ul>
+</li>
+<li>内部类使得多重继承的解决方案变得完整。接口解决了部分问题，而内部类有效地实现了“多重继承”。也就是说，内部类使得Java实现继承多个非接口类型（类或抽象类）</li>
+</ul>
+<h2 id="闭包与回调"><a href="#闭包与回调" class="headerlink" title="闭包与回调"></a>闭包与回调</h2><ul>
+<li>闭包（closure）是一个可调用的对象，它记录了一些信息，这些信息来自于创建它的作用域。通过这个定义可以看出内部类是面向对象的闭包，因为它不仅包含外围类对象（创建内部类的作用域）的信息，还自动拥有一个指向此外围类对象的引用（.this），在此作用域内，内部类有权操作所有的成员，包括private成员。</li>
+<li>回调（callback），通过回调，对象能够携带一些信息，这些信息允许它在稍后的某个时刻调用初始的对象。Java中没有指针，通过内部类提供的闭包功能可以实现回调。<h2 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h2>因为内部类的构造器必须连接到指向其外国类对象的引用，所以在继承内部类的时候，那个指向外围类对象的“秘密的”引用必须被初始化，而在导出类中不再存在可连接的默认对象。必须在构造器内使用如下语法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enclosingClassReference.<span class="keyword">super</span>();</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h1><p>Java提供了大量持有对象的方式：</p>
+<ol>
+<li>数组将数字与对象联系起来。它保存类型明确的对象，查询对象时，不需要对结果做类型转换。它可以是多维的， 可以保存基本类型的数据。但是，数组一旦生成，其容量就不能改变。</li>
+<li>Collection保存单一的元素，而Map保存相关联的键值对。有了Java的泛型，你就可以指定容器中存放的对象类型，因此你就不会将错误类型的对象放置到容器中，并且在从容器中获取元素时，不必进行类型转换。各种Collection和各种Map都可以在你向其中添加更多的元素时，自动调整其尺寸。容器不能持有基本类型，但是自动包装机制会仔细地执行基本类型到容器中所持有的 包装器类型之间的双向转换。</li>
+<li>像数组一样，List也建立数字索引与对象的关联，因此，数组和List都是排好序的容器。List能够自动扩充容量。</li>
+<li>如果要进行大量的随机访问，就使用ArrayList，如果要经常从表中间插入或删除元素，则应该使用LinkedList。</li>
+<li>各种Queue以及枝的行为，由LinkedList提供支持。</li>
+<li>Map是一种将对象（而非数字）与对象相关联的设计。HashMap设计用来快速访问，而Treemap保持 “键” 始终处于排序状态，所以没有HashMap快。LinkedHashMap保持元素插入的顺序，但是也通过散列提供了快速访问能力。<br>7)Set不接受重复元素。HashSet提供最快的查询速度，而TreeSet保持元素处于排序状态。LinkedHashSet以插入顺序保存元素。<br>8）新程序中不应该使用过时的Vector、Hashtable和Stack。<br><img src="https://i.loli.net/2018/06/19/5b2873023929a.png" alt="TIM图片20180619110506.png"></li>
+</ol>
+<h1 id="通过异常处理错误"><a href="#通过异常处理错误" class="headerlink" title="通过异常处理错误"></a>通过异常处理错误</h1><h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>异常允许我们（如果没有其他手段）强制程序停止运行，并告诉我们出现了什么问题，或者（理想状态下）强制程序处理问题，并返回到稳定状态。</p>
+<h2 id="异常处理程序"><a href="#异常处理程序" class="headerlink" title="异常处理程序"></a>异常处理程序</h2><p><strong>终止与恢复</strong></p>
+<ul>
+<li>Java支持终止模型（它是Java和C++所支持的模型）。这种模型假设错误非常关键，以至于程序无法返回到异常发生的地方继续执行。</li>
+<li>另一种模型称为恢复模型。意思是异常处理程序的工作是修正错误，然后重新尝试调用出问题的方法，并认为第二次能成功。并不常用。<h2 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h2>标准异常都有两个构造器：一个是默认构造器；另一个是接受字符串作为参数，以便能把相关信息放入异常对象的构造器。要自己定义异常类，必须从已有的异常类继承，最好是选择意思相近的异常类继承。</li>
+</ul>
+<h2 id="栈轨迹"><a href="#栈轨迹" class="headerlink" title="栈轨迹"></a>栈轨迹</h2><p>Throwable类声明了printStackTrace()方法，它将打印“从方法调用处直到异常抛出处”的方法调用序列。这个方法将返回一个由栈轨迹中的元素所构成的数组，其中每一个元素都表示栈中的一桢。元素0是栈顶元素，并且是调用序列中的最后一个方法调用（这个Throwable被创建和抛出之处）。</p>
+<h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><p>常常会想要在捕获一个异常后抛出另一个异常，并且希望把原始异常的信息保存下来，这被称为异常链。JDK1.4以后，所有Throwable的子类在构造器中都可以接受一个cause对象作为参数。这个cause就用来表示原始异常，这样通过把原始异常传递给新的异常，使得即使在当前位置创建并了新的异常，也能通过这个异常链追踪到异常最初发生的位置。<br>　　在Throwable的子类中，只有Error（用于Java虚拟机报告系统错误）、Exception以及RuntimeException三种基本的异常提供了带cause参数的构造器。</p>
+<h2 id="缺憾：异常丢失"><a href="#缺憾：异常丢失" class="headerlink" title="缺憾：异常丢失"></a>缺憾：异常丢失</h2><p>用某些特殊的方式使用finally子句，可能会丢失异常，一种简单的丢失异常的方式是从finally子句中返回异常覆盖前一个异常。</p>
+<h2 id="异常的限制"><a href="#异常的限制" class="headerlink" title="异常的限制"></a>异常的限制</h2><p>当要覆盖方法的时候，只能抛出在基类方法的异常说明里列出的那些异常。这个限制很有用，因为这意味着，当基类使用的代码应用到其派生类对象的时候，一样能够工作。</p>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h2><p>如果在构造器内抛出了异常，清理行为也许就不能正常工作了。</p>
+<h2 id="异常匹配"><a href="#异常匹配" class="headerlink" title="异常匹配"></a>异常匹配</h2><p>抛出异常的时候，异常处理系统会按照代码的书写顺序抛出“最近”的处理程序。找到匹配的处理程序之后，它就认为异常将得到处理，然后就不再继续查找。</p>
+<h2 id="异常使用指南"><a href="#异常使用指南" class="headerlink" title="异常使用指南"></a>异常使用指南</h2><p>应该在下列情况下使用异常:</p>
+<ol>
+<li>在恰当的级别处理问题。（在知道该如何处理的情况下才捕获异常。）</li>
+<li>解决问题并且重新调用产生异常的方法。</li>
+<li>进行少许修补，然后绕过异常发生的地方继续执行。</li>
+<li>用别的数据进行计算， 以代替方法预计会返回的值。</li>
+<li>把当前运行环境下能做的事情尽量做完，然后把相同的异常重抛到更高层。</li>
+<li>把当前运行环境下能做的事情尽量做完， 然后把不同的异常抛到更高层。</li>
+<li>终止程序。</li>
+<li>进行简化。（虫口果你的异常模式使问题变得太复杂， 那用起来会非常痛苦也很烦人。）</li>
+<li>让类库和程序更安全。（这既是在为调试做短期投资，也是在为程序的健壮性做长期投资。）</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>“报告”功能是异常的精髓所在。Java坚定地强调将所有的错误都以异常形式报告的这一事实，正是它远远超过诸如C++ 这类语言的长处之一，因为在C++这类语言中，需要以大量不同的方式来报告错误，或者根本就没有提供错误报告功能。</p>
 
       
     </div>
@@ -539,8 +665,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -641,6 +776,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#复用类"><span class="nav-number">1.</span> <span class="nav-text">复用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Override注解"><span class="nav-number">1.1.</span> <span class="nav-text">@Override注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在组合与继承之间选择"><span class="nav-number">1.2.</span> <span class="nav-text">在组合与继承之间选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final关键字"><span class="nav-number">1.3.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化及类加载"><span class="nav-number">1.4.</span> <span class="nav-text">初始化及类加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态"><span class="nav-number">2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法调用绑定（Method-call-binding"><span class="nav-number">2.1.</span> <span class="nav-text">方法调用绑定（Method-call binding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和抽象方法（abstract）"><span class="nav-number">3.1.</span> <span class="nav-text">抽象类和抽象方法（abstract）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（interface）"><span class="nav-number">3.2.</span> <span class="nav-text">接口（interface）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接到外部类"><span class="nav-number">4.1.</span> <span class="nav-text">链接到外部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-this-与-new"><span class="nav-number">4.2.</span> <span class="nav-text">使用.this 与 .new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在方法和作用域内的内部类"><span class="nav-number">4.3.</span> <span class="nav-text">在方法和作用域内的内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.4.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套类"><span class="nav-number">4.5.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口内部的类"><span class="nav-number">4.6.</span> <span class="nav-text">接口内部的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从多层嵌套类中访问外部类的成员"><span class="nav-number">4.7.</span> <span class="nav-text">从多层嵌套类中访问外部类的成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要内部类"><span class="nav-number">4.8.</span> <span class="nav-text">为什么需要内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包与回调"><span class="nav-number">4.9.</span> <span class="nav-text">闭包与回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类的继承"><span class="nav-number">4.10.</span> <span class="nav-text">内部类的继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持有对象"><span class="nav-number">5.</span> <span class="nav-text">持有对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过异常处理错误"><span class="nav-number">6.</span> <span class="nav-text">通过异常处理错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">6.1.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理程序"><span class="nav-number">6.2.</span> <span class="nav-text">异常处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自定义异常"><span class="nav-number">6.3.</span> <span class="nav-text">创建自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈轨迹"><span class="nav-number">6.4.</span> <span class="nav-text">栈轨迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常链"><span class="nav-number">6.5.</span> <span class="nav-text">异常链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺憾：异常丢失"><span class="nav-number">6.6.</span> <span class="nav-text">缺憾：异常丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常的限制"><span class="nav-number">6.7.</span> <span class="nav-text">异常的限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器"><span class="nav-number">6.8.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常匹配"><span class="nav-number">6.9.</span> <span class="nav-text">异常匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常使用指南"><span class="nav-number">6.10.</span> <span class="nav-text">异常使用指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.11.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -690,7 +841,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共8.5k字</span>
+  <span class="post-count">博客全站共12.5k字</span>
 </div> 
 
 
