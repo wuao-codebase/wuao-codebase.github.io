@@ -109,7 +109,7 @@
 <meta property="og:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
-<meta property="og:updated_time" content="2018-06-19T03:36:25.224Z">
+<meta property="og:updated_time" content="2018-06-19T03:49:29.996Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thinking in Java知识点(7~12章)">
 <meta name="twitter:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
@@ -549,8 +549,9 @@
 <h2 id="异常处理程序"><a href="#异常处理程序" class="headerlink" title="异常处理程序"></a>异常处理程序</h2><p><strong>终止与恢复</strong></p>
 <ul>
 <li>Java支持终止模型（它是Java和C++所支持的模型）。这种模型假设错误非常关键，以至于程序无法返回到异常发生的地方继续执行。</li>
-<li>另一种模型称为恢复模型。意思是异常处理程序的工作是修正错误，然后重新尝试调用出问题的方法，并认为第二次能成功。并不常用。<h2 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h2>标准异常都有两个构造器：一个是默认构造器；另一个是接受字符串作为参数，以便能把相关信息放入异常对象的构造器。要自己定义异常类，必须从已有的异常类继承，最好是选择意思相近的异常类继承。</li>
+<li>另一种模型称为恢复模型。意思是异常处理程序的工作是修正错误，然后重新尝试调用出问题的方法，并认为第二次能成功。并不常用。</li>
 </ul>
+<h2 id="创建自定义异常"><a href="#创建自定义异常" class="headerlink" title="创建自定义异常"></a>创建自定义异常</h2><p>标准异常都有两个构造器：一个是默认构造器；另一个是接受字符串作为参数，以便能把相关信息放入异常对象的构造器。要自己定义异常类，必须从已有的异常类继承，最好是选择意思相近的异常类继承。</p>
 <h2 id="栈轨迹"><a href="#栈轨迹" class="headerlink" title="栈轨迹"></a>栈轨迹</h2><p>Throwable类声明了printStackTrace()方法，它将打印“从方法调用处直到异常抛出处”的方法调用序列。这个方法将返回一个由栈轨迹中的元素所构成的数组，其中每一个元素都表示栈中的一桢。元素0是栈顶元素，并且是调用序列中的最后一个方法调用（这个Throwable被创建和抛出之处）。</p>
 <h2 id="异常链"><a href="#异常链" class="headerlink" title="异常链"></a>异常链</h2><p>常常会想要在捕获一个异常后抛出另一个异常，并且希望把原始异常的信息保存下来，这被称为异常链。JDK1.4以后，所有Throwable的子类在构造器中都可以接受一个cause对象作为参数。这个cause就用来表示原始异常，这样通过把原始异常传递给新的异常，使得即使在当前位置创建并了新的异常，也能通过这个异常链追踪到异常最初发生的位置。<br>　　在Throwable的子类中，只有Error（用于Java虚拟机报告系统错误）、Exception以及RuntimeException三种基本的异常提供了带cause参数的构造器。</p>
 <h2 id="缺憾：异常丢失"><a href="#缺憾：异常丢失" class="headerlink" title="缺憾：异常丢失"></a>缺憾：异常丢失</h2><p>用某些特殊的方式使用finally子句，可能会丢失异常，一种简单的丢失异常的方式是从finally子句中返回异常覆盖前一个异常。</p>
