@@ -109,7 +109,7 @@
 <meta property="og:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
-<meta property="og:updated_time" content="2018-06-19T03:51:45.475Z">
+<meta property="og:updated_time" content="2018-06-19T03:53:43.160Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thinking in Java知识点(7~12章)">
 <meta name="twitter:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
@@ -533,9 +533,9 @@
 </ul>
 <h2 id="闭包与回调"><a href="#闭包与回调" class="headerlink" title="闭包与回调"></a>闭包与回调</h2><ul>
 <li>闭包（closure）是一个可调用的对象，它记录了一些信息，这些信息来自于创建它的作用域。通过这个定义可以看出内部类是面向对象的闭包，因为它不仅包含外围类对象（创建内部类的作用域）的信息，还自动拥有一个指向此外围类对象的引用（.this），在此作用域内，内部类有权操作所有的成员，包括private成员。</li>
-<li>回调（callback），通过回调，对象能够携带一些信息，这些信息允许它在稍后的某个时刻调用初始的对象。Java中没有指针，通过内部类提供的闭包功能可以实现回调。<h2 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h2>因为内部类的构造器必须连接到指向其外国类对象的引用，所以在继承内部类的时候，那个指向外围类对象的“秘密的”引用必须被初始化，而在导出类中不再存在可连接的默认对象。必须在构造器内使用如下语法：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enclosingClassReference.<span class="keyword">super</span>();</span><br></pre></td></tr></table></figure>
-</li>
+<li>回调（callback），通过回调，对象能够携带一些信息，这些信息允许它在稍后的某个时刻调用初始的对象。Java中没有指针，通过内部类提供的闭包功能可以实现回调。</li>
 </ul>
+<h2 id="内部类的继承"><a href="#内部类的继承" class="headerlink" title="内部类的继承"></a>内部类的继承</h2><p>因为内部类的构造器必须连接到指向其外国类对象的引用，所以在继承内部类的时候，那个指向外围类对象的“秘密的”引用必须被初始化，而在导出类中不再存在可连接的默认对象。必须在构造器内使用如下语法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">enclosingClassReference.<span class="keyword">super</span>();</span><br></pre></td></tr></table></figure></p>
 <h1 id="持有对象"><a href="#持有对象" class="headerlink" title="持有对象"></a>持有对象</h1><p>Java提供了大量持有对象的方式：</p>
 <ol>
 <li>数组将数字与对象联系起来。它保存类型明确的对象，查询对象时，不需要对结果做类型转换。它可以是多维的， 可以保存基本类型的数据。但是，数组一旦生成，其容量就不能改变。</li>
