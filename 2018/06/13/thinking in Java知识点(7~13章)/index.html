@@ -103,15 +103,15 @@
 <meta name="description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta name="keywords" content="java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thinking in Java知识点(7~12章)">
-<meta property="og:url" content="http://yoursite.com/2018/06/13/thinking in Java知识点(7~12章)/index.html">
+<meta property="og:title" content="Thinking in Java知识点(7~13章)">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/thinking in Java知识点(7~13章)/index.html">
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
 <meta property="og:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
-<meta property="og:updated_time" content="2018-06-19T03:53:43.160Z">
+<meta property="og:updated_time" content="2018-06-21T03:22:43.666Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking in Java知识点(7~12章)">
+<meta name="twitter:title" content="Thinking in Java知识点(7~13章)">
 <meta name="twitter:description" content="作者从语言设计者的角度，为我们讲解java是怎么设计的，为什么这样设计。(￣▽￣)”">
 <meta name="twitter:image" content="https://i.loli.net/2018/06/19/5b2873023929a.png">
 
@@ -143,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/13/thinking in Java知识点(7~12章)/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/13/thinking in Java知识点(7~13章)/"/>
 
 
 
 
 
-  <title>Thinking in Java知识点(7~12章) | Tomcat不吃鱼的博客</title>
+  <title>Thinking in Java知识点(7~13章) | Tomcat不吃鱼的博客</title>
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/thinking in Java知识点(7~12章)/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/thinking in Java知识点(7~13章)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tomcat不吃鱼">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Thinking in Java知识点(7~12章)</h1>
+          <h1 class="post-title" itemprop="name headline">Thinking in Java知识点(7~13章)</h1>
         
 
         <div class="post-meta">
@@ -381,7 +381,7 @@
 
           
           
-             <span id="/2018/06/13/thinking in Java知识点(7~12章)/" class="leancloud_visitors" data-flag-title="Thinking in Java知识点(7~12章)">
+             <span id="/2018/06/13/thinking in Java知识点(7~13章)/" class="leancloud_visitors" data-flag-title="Thinking in Java知识点(7~13章)">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,045
+                  4,285
                 </span>
               
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  14
+                  15
                 </span>
               
             </div>
@@ -571,7 +571,13 @@
 <li>让类库和程序更安全。（这既是在为调试做短期投资，也是在为程序的健壮性做长期投资。）</li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>“报告”功能是异常的精髓所在。Java坚定地强调将所有的错误都以异常形式报告的这一事实，正是它远远超过诸如C++ 这类语言的长处之一，因为在C++这类语言中，需要以大量不同的方式来报告错误，或者根本就没有提供错误报告功能。</p>
-
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h2 id="不可变String"><a href="#不可变String" class="headerlink" title="不可变String"></a>不可变String</h2><p>String对象是不可变的。String类中每个看起来会修改String值的方法，实际上都是创建了一个全新的String对象，以包含修改后的字符串内容。而最初的String对象则丝毫未动。</p>
+<h2 id="重载“-”与-StringBuilder"><a href="#重载“-”与-StringBuilder" class="headerlink" title="重载“+”与 StringBuilder"></a>重载“+”与 StringBuilder</h2><p>用于String的“+”与“+=”是Java中仅有的两个重载过的运算符，Java不允许程序员重载任何运算符（但其实Java语言比C++更容易实现运算符的重载）。</p>
+<ul>
+<li>String的不可变性带来了一定的效率问题，比如String的“+”运算，每“+”一次都会生成一个新的String对象。Java编译器一般会自动调用StringBuilder进行优化，但不同情况下，优化的程度不够。多字符串拼接式手动创建StringBuilder效率高。</li>
+<li>StringBuffer 线程安全，效率低。</li>
+</ul>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String content = <span class="string">"I am noob "</span> +</span><br><span class="line">        <span class="string">"from runoob.com."</span>;</span><br><span class="line">String pattern = <span class="string">".*runoob.*"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">boolean</span> isMatch = Pattern.matches(pattern, content);</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -786,7 +792,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#复用类"><span class="nav-number">1.</span> <span class="nav-text">复用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Override注解"><span class="nav-number">1.1.</span> <span class="nav-text">@Override注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在组合与继承之间选择"><span class="nav-number">1.2.</span> <span class="nav-text">在组合与继承之间选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final关键字"><span class="nav-number">1.3.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化及类加载"><span class="nav-number">1.4.</span> <span class="nav-text">初始化及类加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态"><span class="nav-number">2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法调用绑定（Method-call-binding"><span class="nav-number">2.1.</span> <span class="nav-text">方法调用绑定（Method-call binding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和抽象方法（abstract）"><span class="nav-number">3.1.</span> <span class="nav-text">抽象类和抽象方法（abstract）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（interface）"><span class="nav-number">3.2.</span> <span class="nav-text">接口（interface）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接到外部类"><span class="nav-number">4.1.</span> <span class="nav-text">链接到外部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-this-与-new"><span class="nav-number">4.2.</span> <span class="nav-text">使用.this 与 .new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在方法和作用域内的内部类"><span class="nav-number">4.3.</span> <span class="nav-text">在方法和作用域内的内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.4.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套类"><span class="nav-number">4.5.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口内部的类"><span class="nav-number">4.6.</span> <span class="nav-text">接口内部的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从多层嵌套类中访问外部类的成员"><span class="nav-number">4.7.</span> <span class="nav-text">从多层嵌套类中访问外部类的成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要内部类"><span class="nav-number">4.8.</span> <span class="nav-text">为什么需要内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包与回调"><span class="nav-number">4.9.</span> <span class="nav-text">闭包与回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类的继承"><span class="nav-number">4.10.</span> <span class="nav-text">内部类的继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持有对象"><span class="nav-number">5.</span> <span class="nav-text">持有对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过异常处理错误"><span class="nav-number">6.</span> <span class="nav-text">通过异常处理错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">6.1.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理程序"><span class="nav-number">6.2.</span> <span class="nav-text">异常处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自定义异常"><span class="nav-number">6.3.</span> <span class="nav-text">创建自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈轨迹"><span class="nav-number">6.4.</span> <span class="nav-text">栈轨迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常链"><span class="nav-number">6.5.</span> <span class="nav-text">异常链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺憾：异常丢失"><span class="nav-number">6.6.</span> <span class="nav-text">缺憾：异常丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常的限制"><span class="nav-number">6.7.</span> <span class="nav-text">异常的限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器"><span class="nav-number">6.8.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常匹配"><span class="nav-number">6.9.</span> <span class="nav-text">异常匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常使用指南"><span class="nav-number">6.10.</span> <span class="nav-text">异常使用指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.11.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#复用类"><span class="nav-number">1.</span> <span class="nav-text">复用类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Override注解"><span class="nav-number">1.1.</span> <span class="nav-text">@Override注解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在组合与继承之间选择"><span class="nav-number">1.2.</span> <span class="nav-text">在组合与继承之间选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#final关键字"><span class="nav-number">1.3.</span> <span class="nav-text">final关键字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化及类加载"><span class="nav-number">1.4.</span> <span class="nav-text">初始化及类加载</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多态"><span class="nav-number">2.</span> <span class="nav-text">多态</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法调用绑定（Method-call-binding"><span class="nav-number">2.1.</span> <span class="nav-text">方法调用绑定（Method-call binding</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口"><span class="nav-number">3.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#抽象类和抽象方法（abstract）"><span class="nav-number">3.1.</span> <span class="nav-text">抽象类和抽象方法（abstract）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口（interface）"><span class="nav-number">3.2.</span> <span class="nav-text">接口（interface）</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">4.</span> <span class="nav-text">内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接到外部类"><span class="nav-number">4.1.</span> <span class="nav-text">链接到外部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用-this-与-new"><span class="nav-number">4.2.</span> <span class="nav-text">使用.this 与 .new</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在方法和作用域内的内部类"><span class="nav-number">4.3.</span> <span class="nav-text">在方法和作用域内的内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类"><span class="nav-number">4.4.</span> <span class="nav-text">匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套类"><span class="nav-number">4.5.</span> <span class="nav-text">嵌套类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#接口内部的类"><span class="nav-number">4.6.</span> <span class="nav-text">接口内部的类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从多层嵌套类中访问外部类的成员"><span class="nav-number">4.7.</span> <span class="nav-text">从多层嵌套类中访问外部类的成员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么需要内部类"><span class="nav-number">4.8.</span> <span class="nav-text">为什么需要内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#闭包与回调"><span class="nav-number">4.9.</span> <span class="nav-text">闭包与回调</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内部类的继承"><span class="nav-number">4.10.</span> <span class="nav-text">内部类的继承</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持有对象"><span class="nav-number">5.</span> <span class="nav-text">持有对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通过异常处理错误"><span class="nav-number">6.</span> <span class="nav-text">通过异常处理错误</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#异常"><span class="nav-number">6.1.</span> <span class="nav-text">异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常处理程序"><span class="nav-number">6.2.</span> <span class="nav-text">异常处理程序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建自定义异常"><span class="nav-number">6.3.</span> <span class="nav-text">创建自定义异常</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈轨迹"><span class="nav-number">6.4.</span> <span class="nav-text">栈轨迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常链"><span class="nav-number">6.5.</span> <span class="nav-text">异常链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺憾：异常丢失"><span class="nav-number">6.6.</span> <span class="nav-text">缺憾：异常丢失</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常的限制"><span class="nav-number">6.7.</span> <span class="nav-text">异常的限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造器"><span class="nav-number">6.8.</span> <span class="nav-text">构造器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常匹配"><span class="nav-number">6.9.</span> <span class="nav-text">异常匹配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异常使用指南"><span class="nav-number">6.10.</span> <span class="nav-text">异常使用指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">6.11.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串"><span class="nav-number">7.</span> <span class="nav-text">字符串</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#不可变String"><span class="nav-number">7.1.</span> <span class="nav-text">不可变String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重载“-”与-StringBuilder"><span class="nav-number">7.2.</span> <span class="nav-text">重载“+”与 StringBuilder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则表达式"><span class="nav-number">7.3.</span> <span class="nav-text">正则表达式</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -842,7 +848,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共12.5k字</span>
+  <span class="post-count">博客全站共12.7k字</span>
 </div> 
 
 
