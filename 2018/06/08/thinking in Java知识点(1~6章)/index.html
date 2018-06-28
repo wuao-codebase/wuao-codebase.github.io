@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
 <meta property="og:description" content="Java基础书籍，讲的通俗易懂且有深度，复习的过程中顺手做个知识点总结。(￣▽￣)”">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-13T12:08:43.189Z">
+<meta property="og:updated_time" content="2018-06-28T08:43:44.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thinking in Java知识点(1~6章)">
 <meta name="twitter:description" content="Java基础书籍，讲的通俗易懂且有深度，复习的过程中顺手做个知识点总结。(￣▽￣)”">
@@ -676,13 +676,7 @@
 </li>
 <li>对于方法的局部变量，需程序员来初始化，不然Java以编译时错误提示。</li>
 </ul>
-<h2 id="对象创建过程"><a href="#对象创建过程" class="headerlink" title="对象创建过程"></a>对象创建过程</h2><p>假设有个名为Dog的类：<br>1.构造器实际上也是静态方法。因此，当首次创建类型为Dog的对象时（构造器可以看成静态方法），或者Dog类的静态方法／静态域首次被访问时，Java解析器必须查找类路径，以定位Dog.class文件。<br>2.然后载入Dog.class，有关静态初始化的所有动作都会执行。因此，静态初始化只在Class对象首次加载的时候进行一次。</p>
-<ol start="3">
-<li>当用new Dog()创建对象的时候，首先将在堆上为Dog对象分配足够的存储空间。</li>
-<li>存储空间清零，这就自动地将Dog对象中的所有基本类型数据都设置成了默认值.</li>
-<li>执行所有出现于字段定义处的初始化动作。</li>
-<li>执行构造器。</li>
-</ol>
+<h2 id="对象创建过程"><a href="#对象创建过程" class="headerlink" title="对象创建过程"></a>对象创建过程</h2><p>假设有个名为Dog的类：<br>1.构造器实际上也是静态方法。因此，当首次创建类型为Dog的对象时（构造器可以看成静态方法），或者Dog类的静态方法／静态域首次被访问时，Java解析器必须查找类路径，以定位Dog.class文件。<br>2.然后载入Dog.class，有关静态初始化的所有动作都会执行。因此，静态初始化只在Class对象首次加载的时候进行一次。<br>3.当用new Dog()创建对象的时候，首先将在堆上为Dog对象分配足够的存储空间。<br>4.存储空间清零，这就自动地将Dog对象中的所有基本类型数据都设置成了默认值.<br>5.执行所有出现于字段定义处的初始化动作。<br>6.执行构造器。</p>
 <h2 id="数组初始化"><a href="#数组初始化" class="headerlink" title="数组初始化"></a>数组初始化</h2><p>可以将Java中的数组作为一种数组类型来理解。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] a = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">3</span>];</span><br></pre></td></tr></table></figure></p>
 <p>int[] a声明一个数组引用，初始值为null，编辑器不允许指定数组的大小。new int[3]初始化各元素值为0;<br>int[] a = {1, 2, 3}; 初始化元素分别为1, 2, 3; 这种情况下，存储空间的分配（等价于使用new） 将由编译器负责。</p>
 <h2 id="可变参数列表"><a href="#可变参数列表" class="headerlink" title="可变参数列表"></a>可变参数列表</h2><p>可变参数列表应用于参数个数或类型未知的场合。由于所有的类都直接或间接继承子Object类</p>
@@ -885,7 +879,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -907,7 +901,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
