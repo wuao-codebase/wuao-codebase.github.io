@@ -103,15 +103,15 @@
 <meta name="description" content="深入理解JAVA虚拟机——类是如何进入JVM的？">
 <meta name="keywords" content="JVM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java类编译和加载">
-<meta property="og:url" content="http://yoursite.com/2018/06/28/Java类编译和加载/index.html">
+<meta property="og:title" content="Java类编译，加载和卸载">
+<meta property="og:url" content="http://yoursite.com/2018/06/28/Java类编译，加载和卸载/index.html">
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
 <meta property="og:description" content="深入理解JAVA虚拟机——类是如何进入JVM的？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/28/5b347dad214da.png">
-<meta property="og:updated_time" content="2018-07-02T14:21:13.991Z">
+<meta property="og:updated_time" content="2018-07-02T15:39:40.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java类编译和加载">
+<meta name="twitter:title" content="Java类编译，加载和卸载">
 <meta name="twitter:description" content="深入理解JAVA虚拟机——类是如何进入JVM的？">
 <meta name="twitter:image" content="https://i.loli.net/2018/06/28/5b347dad214da.png">
 
@@ -143,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/28/Java类编译和加载/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/28/Java类编译，加载和卸载/"/>
 
 
 
 
 
-  <title>Java类编译和加载 | Tomcat不吃鱼的博客</title>
+  <title>Java类编译，加载和卸载 | Tomcat不吃鱼的博客</title>
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/Java类编译和加载/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/28/Java类编译，加载和卸载/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tomcat不吃鱼">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java类编译和加载</h1>
+          <h1 class="post-title" itemprop="name headline">Java类编译，加载和卸载</h1>
         
 
         <div class="post-meta">
@@ -381,7 +381,7 @@
 
           
           
-             <span id="/2018/06/28/Java类编译和加载/" class="leancloud_visitors" data-flag-title="Java类编译和加载">
+             <span id="/2018/06/28/Java类编译，加载和卸载/" class="leancloud_visitors" data-flag-title="Java类编译，加载和卸载">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,010
+                  3,139
                 </span>
               
 
@@ -423,7 +423,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  10
+                  11
                 </span>
               
             </div>
@@ -531,6 +531,12 @@
 <h3 id="2-5-5-初始化"><a href="#2-5-5-初始化" class="headerlink" title="2.5.5 初始化"></a>2.5.5 初始化</h3><p>初始化阶段，才真正开始执行类中定义的Java 程序代码（或者说是字节码）。初始化阶段是执行类构造器＜clinit&gt;（）方法的过程。</p>
 <ul>
 <li>＜clinit＞（）方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块(static｛｝块）中的语句合并产生的，编译器收集的顺序是由语句在源文件中出现的 顺序所决定的， 静态语句块中只能访问到定义在静态语句块之前的变量，定义在它之后的变量，在前面的静态语句块可以赋值，但是不能访问。 </li>
+</ul>
+<h1 id="java类卸载"><a href="#java类卸载" class="headerlink" title="java类卸载"></a>java类卸载</h1><p>“无用类”并不是和对象一样，不使用了就必须回收。是否对类进行回收，HotSpot虚拟机提供了-Xnoclassgc参数进行控制。“无用类”须符合以下标准：</p>
+<ul>
+<li>该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例。</li>
+<li>加载该类的ClassLoader已经被回收。</li>
+<li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问。</li>
 </ul>
 
       
@@ -751,7 +757,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java类的编译过程"><span class="nav-text">1. Java类的编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-解析与填充符号表"><span class="nav-text">1.1 解析与填充符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-注解处理"><span class="nav-text">1.2 注解处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-语义分析和生成字节码"><span class="nav-text">1.3 语义分析和生成字节码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-java类加载"><span class="nav-text">2. java类加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类加载的时机"><span class="nav-text">2.1 类加载的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-类加载器"><span class="nav-text">2.2 类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-双亲委派模型"><span class="nav-text">2.3 双亲委派模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-类与类加载器"><span class="nav-text">2.4 类与类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-类加载过程"><span class="nav-text">2.5 类加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-加载"><span class="nav-text">2.5.1 加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-验证"><span class="nav-text">2.5.2 验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-准备"><span class="nav-text">2.5.3 准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-4-解析"><span class="nav-text">2.5.4 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-5-初始化"><span class="nav-text">2.5.5 初始化</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java类的编译过程"><span class="nav-text">1. Java类的编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-解析与填充符号表"><span class="nav-text">1.1 解析与填充符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-注解处理"><span class="nav-text">1.2 注解处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-语义分析和生成字节码"><span class="nav-text">1.3 语义分析和生成字节码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-java类加载"><span class="nav-text">2. java类加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类加载的时机"><span class="nav-text">2.1 类加载的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-类加载器"><span class="nav-text">2.2 类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-双亲委派模型"><span class="nav-text">2.3 双亲委派模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-类与类加载器"><span class="nav-text">2.4 类与类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-类加载过程"><span class="nav-text">2.5 类加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-加载"><span class="nav-text">2.5.1 加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-验证"><span class="nav-text">2.5.2 验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-准备"><span class="nav-text">2.5.3 准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-4-解析"><span class="nav-text">2.5.4 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-5-初始化"><span class="nav-text">2.5.5 初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java类卸载"><span class="nav-text">java类卸载</span></a></li></ol></div>
             
 
           </div>
@@ -807,7 +813,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共32.6k字</span>
+  <span class="post-count">博客全站共32.7k字</span>
 </div> 
 
 
