@@ -109,7 +109,7 @@
 <meta property="og:description" content="深入理解JAVA虚拟机——类">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/28/5b347dad214da.png">
-<meta property="og:updated_time" content="2018-07-01T10:06:21.291Z">
+<meta property="og:updated_time" content="2018-07-01T14:18:12.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java类编译、加载、和执行">
 <meta name="twitter:description" content="深入理解JAVA虚拟机——类">
@@ -478,11 +478,11 @@
 <li>方法表集合</li>
 <li>属性表集合</li>
 </ul>
-<h1 id="2-JVM类加载"><a href="#2-JVM类加载" class="headerlink" title="2. JVM类加载"></a>2. JVM类加载</h1><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载（Loading）、验证（ Verification ）、准备（ Preparation）解析（Resolution）、初始化(Initialization）、使用（ Using）和卸载（Unloading)7个阶段。 其中验证、准备、解析3 个部分统称为连接（Linking）。</p>
+<h1 id="2-java类加载"><a href="#2-java类加载" class="headerlink" title="2. java类加载"></a>2. java类加载</h1><p>类从被加载到虚拟机内存中开始，到卸载出内存为止，它的整个生命周期包括：加载（Loading）、验证（ Verification ）、准备（ Preparation）解析（Resolution）、初始化(Initialization）、使用（ Using）和卸载（Unloading)7个阶段。 其中验证、准备、解析3 个部分统称为连接（Linking）。</p>
 <h2 id="2-1-类加载的时机"><a href="#2-1-类加载的时机" class="headerlink" title="2.1 类加载的时机"></a>2.1 类加载的时机</h2><ul>
 <li>遇到new、getstatic、putstatic或 invokestatic这4条字节码指令时，最常见的 Java代码场景是：使用new关键字实例化对象的时候、读取或设置一个类的静态字段（被final修饰、已在编译期把结果放入常量池的静态字段除外）的时候，以及调用一个类的静态方法的时候。</li>
 <li>使用 java.Iang.reflect包的方法对类进行反射调用的时候。</li>
-<li>当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父 类的初胎化。</li>
+<li>当初始化一个类的时候，如果发现其父类还没有进行过初始化，则需要先触发其父 类的初始化。</li>
 <li>当虚拟机启动时，用户需要指定一个要执行的主类（包含main（）方法的那个类），虚拟机会先初始化这个主类。<br>5）当使用JDK l.7的动态语育支持时， 如果一个java.lang.invoke.MethodHandle 实例最后的解析结果REF_getStatic 、REF_putStatic、REF_invokeStatic 的方法句柄。  </li>
 </ul>
 <p>接口初始化和类初始化基本相同，除了不会连带初始化父接口。</p>
@@ -572,8 +572,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/01/java内存管理和垃圾回收机制/" rel="prev" title="java内存管理和垃圾回收机制">
-                java内存管理和垃圾回收机制 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/07/01/java内存管理和对象创建/" rel="prev" title="java内存管理和对象创建理">
+                java内存管理和对象创建理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -751,7 +751,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java类的编译过程"><span class="nav-text">1. Java类的编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-解析与填充符号表"><span class="nav-text">1.1 解析与填充符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-注解处理"><span class="nav-text">1.2 注解处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-语义分析和生成字节码"><span class="nav-text">1.3 语义分析和生成字节码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-JVM类加载"><span class="nav-text">2. JVM类加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类加载的时机"><span class="nav-text">2.1 类加载的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-类加载器"><span class="nav-text">2.2 类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-双亲委派模型"><span class="nav-text">2.3 双亲委派模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-类与类加载器"><span class="nav-text">2.4 类与类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-类加载过程"><span class="nav-text">2.5 类加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-加载"><span class="nav-text">2.5.1 加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-验证"><span class="nav-text">2.5.2 验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-准备"><span class="nav-text">2.5.3 准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-4-解析"><span class="nav-text">2.5.4 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-5-初始化"><span class="nav-text">2.5.5 初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-java执行引擎"><span class="nav-text">3. java执行引擎</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Java类的编译过程"><span class="nav-text">1. Java类的编译过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-解析与填充符号表"><span class="nav-text">1.1 解析与填充符号表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-注解处理"><span class="nav-text">1.2 注解处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-语义分析和生成字节码"><span class="nav-text">1.3 语义分析和生成字节码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-java类加载"><span class="nav-text">2. java类加载</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-类加载的时机"><span class="nav-text">2.1 类加载的时机</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-类加载器"><span class="nav-text">2.2 类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-双亲委派模型"><span class="nav-text">2.3 双亲委派模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-类与类加载器"><span class="nav-text">2.4 类与类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5-类加载过程"><span class="nav-text">2.5 类加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-1-加载"><span class="nav-text">2.5.1 加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-2-验证"><span class="nav-text">2.5.2 验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-3-准备"><span class="nav-text">2.5.3 准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-4-解析"><span class="nav-text">2.5.4 解析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-5-初始化"><span class="nav-text">2.5.5 初始化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-java执行引擎"><span class="nav-text">3. java执行引擎</span></a></li></ol></div>
             
 
           </div>
@@ -807,7 +807,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共29.1k字</span>
+  <span class="post-count">博客全站共32.6k字</span>
 </div> 
 
 
