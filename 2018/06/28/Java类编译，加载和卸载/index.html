@@ -109,7 +109,7 @@
 <meta property="og:description" content="深入理解JAVA虚拟机——类是如何进入JVM的？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/06/28/5b347dad214da.png">
-<meta property="og:updated_time" content="2018-07-02T15:39:40.872Z">
+<meta property="og:updated_time" content="2018-07-03T03:45:01.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java类编译，加载和卸载">
 <meta name="twitter:description" content="深入理解JAVA虚拟机——类是如何进入JVM的？">
@@ -407,7 +407,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,139
+                  3,196
                 </span>
               
 
@@ -538,6 +538,7 @@
 <li>加载该类的ClassLoader已经被回收。</li>
 <li>该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问。</li>
 </ul>
+<p>在大量使用反射、动态代理、CGLib等ByteCode框架、动态生成JSP 以及OSGi这类频繁自定义ClassLoader的场景都需要虚拟机具备类卸载的功能，以保证永久代不会溢出。</p>
 
       
     </div>
@@ -813,7 +814,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共32.7k字</span>
+  <span class="post-count">博客全站共32.8k字</span>
 </div> 
 
 
