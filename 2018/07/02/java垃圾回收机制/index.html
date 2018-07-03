@@ -108,7 +108,7 @@
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
 <meta property="og:description" content="深入理解JAVA虚拟机——java是如何自动完成垃圾回收的？">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-02T14:51:28.465Z">
+<meta property="og:updated_time" content="2018-07-03T07:27:26.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java垃圾回收机制">
 <meta name="twitter:description" content="深入理解JAVA虚拟机——java是如何自动完成垃圾回收的？">
@@ -405,7 +405,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  21
+                  3,489
                 </span>
               
 
@@ -421,7 +421,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  12
                 </span>
               
             </div>
@@ -444,6 +444,68 @@
       
         <div class="note info"><p>深入理解JAVA虚拟机——java是如何自动完成垃圾回收的？</p></div>
 <a id="more"></a>
+<h1 id="1-对象已死吗？"><a href="#1-对象已死吗？" class="headerlink" title="1. 对象已死吗？"></a>1. 对象已死吗？</h1><p>Java堆中存放着大量的Java对象实例，在垃圾收集器回收内存前，第一件事情就是确定哪些对象是“活着的”，哪些是可以回收的。</p>
+<h2 id="1-1-引用计数算法"><a href="#1-1-引用计数算法" class="headerlink" title="1.1 引用计数算法"></a>1.1 引用计数算法</h2><p>引用计数算法是判断对象是否存活的基本算法：给每个对象添加一个引用计数器，没当一个地方引用它的时候，计数器值加1；当引用失效后，计数器值减1。但是这种方法有一个致命的缺陷，当两个对象相互引用时会导致这两个都无法被回收。</p>
+<h2 id="1-2-可达性分析算法-根搜索算法"><a href="#1-2-可达性分析算法-根搜索算法" class="headerlink" title="1.2 可达性分析算法(根搜索算法)"></a>1.2 可达性分析算法(根搜索算法)</h2><p>在主流的商用语言中（Java、C#…）都是使用根搜索算法来判断对象是否存活。算法的基本思路就是通过一系列的称为“GC   Roots”咱的对象作为应始点，从这些节点开始向下搜索，搜索所走过的路径称为引用链，当一个对象GC Roots没有任何引用链相连时，则证明此对象是不可用的。</p>
+<p>在lava语言中，可作为GC Roots的对象包括下面几种：</p>
+<ul>
+<li>虚拟机栈（栈帧中的本地变量表）中引用的对象。</li>
+<li>方法区中的类静态属性引用的变量。</li>
+<li>方法区中的常量引用的对象。</li>
+<li>本地方法JNI（Native方法）的引用对象。</li>
+</ul>
+<h2 id="1-3-再谈引用"><a href="#1-3-再谈引用" class="headerlink" title="1.3 再谈引用"></a>1.3 再谈引用</h2><p>引用对象封装了指向其他对象的连接：被指向的对象称为引用目标。Reference有三个直接子类SoftReference、WeakReference、PhantomReference分别代表：软引用、弱引用、虚引用。</p>
+<ul>
+<li><p>强引用在Java中是普遍存在的;<strong>只要强引用还存在，禁止引用目标被垃圾收集器收集</strong>。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object obj = <span class="keyword">new</span> Object();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>软引用是用来描述一些还有用但并非必需的对象，对于软引用关联着的对象，<strong>在系统将要发生内存溢出异常之前，将会把弱引用对象列进回收范围进行第二次回收</strong>。如果这次回收还没有足够的内存，才会抛出内存溢出异常。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SoftReference&lt;Object&gt; sf = <span class="keyword">new</span> SoftReference&lt;Object&gt;(obj);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>弱引用也是用来描述非必需对象的，但是它的强度比软引用更弱一些，被弱引用关联的对象，只能生存到下一次垃圾收集发生之前。<strong>当垃圾收集器工作时，无论当前内存是否足够，都会回收掉只被弱引用关联的对象</strong>。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WeakReference&lt;Object&gt; wf = <span class="keyword">new</span> WeakReference&lt;Object&gt;(obj);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>虚引用也成为幽灵引用或者幻影引用，它是最弱的一中引用关系。一个对象是否有虚引用的存在，完全不会对其生存时间构成影响，也<strong>无法通过虚引用来取得一个对象实例。为一个对象设置虚引用关联的唯一目的就是能在这个对象被收集器回收时收到一个系统通知</strong>。</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PhantomReference&lt;Object&gt; pf = <span class="keyword">new</span> PhantomReference&lt;Object&gt;(obj);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>若一个对象的引用类型有多个，那到底如何判断它的可达性呢？其实规则如下：</p>
+<ul>
+<li>单条引用链的可达性以最弱的一个引用类型来决定；</li>
+<li>多条引用链的可达性以最强的一个引用类型来决定；</li>
+</ul>
+<h1 id="2-垃圾回收算法"><a href="#2-垃圾回收算法" class="headerlink" title="2. 垃圾回收算法"></a>2. 垃圾回收算法</h1><h2 id="2-1-标记–清除算法"><a href="#2-1-标记–清除算法" class="headerlink" title="2.1 标记–清除算法"></a>2.1 标记–清除算法</h2><p>首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象，标记的方法使用根搜索算法。主要有两个缺点：<br>效率问题，标记和清除的效率都不高。<br>空间问题，标记清除后会产生大量不连续的内存碎片。</p>
+<h2 id="2-2-复制回收算法"><a href="#2-2-复制回收算法" class="headerlink" title="2.2 复制回收算法"></a>2.2 复制回收算法</h2><p>将可用内存分为大小相等的两份，在同一时刻只使用其中的一份。当这一份内存使用完了，就将还存活的对象复制到另一份上，然后将这一份上的内存清空。复制算法能有效避免内存碎片，但是算法需要将内存一分为二，导致内存使用率大大降低。</p>
+<h2 id="2-3-标记–整理算法"><a href="#2-3-标记–整理算法" class="headerlink" title="2.3 标记–整理算法"></a>2.3 标记–整理算法</h2><p>复制算法在对象存活率较高的情况下会复制很多的对象，效率会很低。标记–整理算法就解决了这样的问题，标记过程和标记–清除算法一样，但后续是将所有存活的对象都移动到内存的一端，然后清理掉端边界以外的内存。</p>
+<h2 id="2-4-分代回收算法"><a href="#2-4-分代回收算法" class="headerlink" title="2.4 分代回收算法"></a>2.4 分代回收算法</h2><p>分代垃圾回收采用分治的思想，进行代的划分，把不同生命周期的对象放在不同代上，不同代上采用最适合它的垃圾回收方式进行回收。<br>JVM中的共划分为三个代：新生代（Young Generation）、老年代（Old Generation）和持久代（Permanent Generation）。其中持久代主要存放的是Java类的类信息，与垃圾收集要收集的Java对象关系不大。</p>
+<p>新生代：所有新生成的对象首先都是放在新生代的，新生代采用复制回收算法。新生代的目标就是尽可能快速的收集掉那些生命周期短的对象。新生代分三个区。一个Eden区，两个Survivor区(一般而言)。大部分对象在Eden区中生成。当Eden区满时，还存活的对象将被复制到Survivor区（两个中的一个），当这个Survivor区满时，此区的存活对象将被复制到另外一个Survivor区，来回反复。当Survivor区空间不够时，将依赖老年代进行分配担保。  </p>
+<p>老年代：在新生代中经历了N次垃圾回收后仍然存活的对象，就会被放到老年代中，老年代采用标记——整理回收算法。因此，可以认为老年代中存放的都是一些生命周期较长的对象。  </p>
+<h1 id="3-内存分配和回收策略"><a href="#3-内存分配和回收策略" class="headerlink" title="3. 内存分配和回收策略"></a>3. 内存分配和回收策略</h1><ul>
+<li><strong>对象优先在Eden分配</strong>，当Eden满时发起Minor GC</li>
+<li>大对象直接进入老年区，需要大量连续内存空间的java对象。</li>
+<li><strong>长期存活的对象将进入老年代</strong>，对象在Survivor区每熬过一次Minor GC，对象年龄设为1，当年龄达到15岁（默认15，使用MaxTenuringThreshold设置），将进入老年代。</li>
+<li><strong>动态对象年龄判定</strong>，如果在Survivor空间中相同年龄所有对象大小的总和大于Survivor空间的一半，年龄大于或等于这个年龄的对象进入老年区。</li>
+<li><strong>空间分配担保</strong>，在发生Minor GC之前，虚拟机会先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果这个条件成立，那么Minor GC可以确保是安全的。如果不成立，则虚拟机会查看HandlePromotionFailure设置值是否允许担保失败。如果允许，那么会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试着进行一次Minor GC，尽管这次Minor GC是有风险的；如果小于，或者HandlePromotionFailure设置不允许冒险，那这时也要改为进行一次Full GC。</li>
+</ul>
+<h1 id="4-垃圾收集器"><a href="#4-垃圾收集器" class="headerlink" title="4. 垃圾收集器"></a>4. 垃圾收集器</h1><p>垃圾收集器是内存回收的具体实现，下图展示了7种用于不同分代的收集器，两个收集器之间有连线表示可以搭配使用。下面的这些收集器没有“最好的”这一说，每种收集器都有最适合的使用场景。</p>
+<h2 id="4-1-Serial收集器"><a href="#4-1-Serial收集器" class="headerlink" title="4.1 Serial收集器"></a>4.1 Serial收集器</h2><p>Serial收集器是最基本的收集器，这是一个单线程收集器，它“单线程”的意义不仅仅是说明它只用一个线程去完成垃圾收集工作，更重要的是在它进行垃圾收集工作时，必须暂停其他工作线程，直到它收集完成。Sun将这件事称之为”Stop the world“。<br>没有一个收集器能完全不停顿，只是停顿的时间长短。<br>虽然Serial收集器的缺点很明显，但是它仍然是JVM在Client模式下的默认新生代收集器。它有着优于其他收集器的地方：简单而高效（与其他收集器的单线程比较），Serial收集器由于没有线程交互的开销，专心只做垃圾收集自然也获得最高的效率。在用户桌面场景下，分配给JVM的内存不会太多，停顿时间完全可以在几十到一百多毫秒之间，只要收集不频繁，这是完全可以接受的。</p>
+<h2 id="4-2-ParNew收集器"><a href="#4-2-ParNew收集器" class="headerlink" title="4.2 ParNew收集器"></a>4.2 ParNew收集器</h2><p>ParNew是Serial的多线程版本，在回收算法、对象分配原则上都是一致的。ParNew收集器是许多运行在Server模式下的默认新生代垃圾收集器，其主要在于除了Serial收集<br>器，目前只有ParNew收集器能够与CMS收集器配合工作。</p>
+<h2 id="4-3-Parallel-Scavenge收集器"><a href="#4-3-Parallel-Scavenge收集器" class="headerlink" title="4.3 Parallel Scavenge收集器"></a>4.3 Parallel Scavenge收集器</h2><p>Parallel Scavenge收集器是一个新生代垃圾收集器，其使用的算法是复制算法，也是并行的多线程收集器。</p>
+<p>Parallel Scavenge<br>收集器更关注可控制的吞吐量，吞吐量等于运行用户代码的时间/(运行用户代码的时间+垃圾收集时间)。直观上，只要最大的垃圾收集停顿时间越小，吞吐量是越高的，但是GC停顿时间的缩短是以牺牲吞吐量和新生代空间作为代价的。比如原来10秒收集一次，每次停顿100毫秒，现在变成5秒收集一次，每次停顿70毫秒。停顿时间下降的同时，吞吐量也下降了。停顿时间越短就越适合需要与用户交互的程序；而高吞吐量则可以最高效的利用CPU的时间，尽快的完成计算任务，主要适用于后台运算。</p>
+<h2 id="4-4-Serial-Old收集器"><a href="#4-4-Serial-Old收集器" class="headerlink" title="4.4 Serial Old收集器"></a>4.4 Serial Old收集器</h2><p>Serial Old收集器是Serial收集器的老年代版本，也是一个单线程收集器，采用“标记-整理算法”进行回收。其运行过程与Serial收集器一样。</p>
+<h2 id="4-5-Parallel-Old收集器"><a href="#4-5-Parallel-Old收集器" class="headerlink" title="4.5 Parallel Old收集器"></a>4.5 Parallel Old收集器</h2><p>Parallel Old收集器是Parallel Scavenge收集器的老年代版本，使用多线程和标记-整理算法进行垃圾回收。其通常与Parallel Scavenge收集器配合使用，“吞吐量优先”收集器是这个组合的特点，在注重吞吐量和CPU资源敏感的场合，都可以使用这个组合。</p>
+<h2 id="4-6-CMS-收集器"><a href="#4-6-CMS-收集器" class="headerlink" title="4.6 CMS 收集器"></a>4.6 CMS 收集器</h2><p>CMS（Concurrent Mark Sweep）收集器是一种以获取最短停顿时间为目标的收集器，CMS收集器采用标记–清除算法，运行在老年代。主要包含以下几个步骤：</p>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除</li>
+</ul>
+<p>其中初始标记和重新标记仍然需要“Stop the world”。初始标记仅仅标记GC Root能直接关联的对象，并发标记就是进行GC Root Tracing过程，而重新标记则是为了修正并发标记期间，因用户程序继续运行而导致标记变动的那部分对象的标记记录。</p>
+<p>由于整个过程中最耗时的并发标记和并发清除，收集线程和用户线程一起工作，所以总体上来说，CMS收集器回收过程是与用户线程并发执行的。虽然CMS优点是并发收集、低停顿，很大程度上已经是一个不错的垃圾收集器，但是还是有三个显著的缺点：<br>CMS收集器对CPU资源很敏感。在并发阶段，虽然它不会导致用户线程停顿，但是会因为占用一部分线程（CPU资源）而导致应用程序变慢。</p>
+<p>CMS收集器不能处理浮动垃圾。所谓的“浮动垃圾”，就是在并发标记阶段，由于用户程序在运行，那么自然就会有新的垃圾产生，这部分垃圾被标记过后，CMS无法在当次集中处理它们，只好在下一次GC的时候处理，这部分未处理的垃圾就称为“浮动垃圾”。也是由于在垃圾收集阶段程序还需要运行，即还需要预留足够的内存空间供用户使用，因此CMS收集器不能像其他收集器那样等到老年代几乎填满才进行收集，需要预留一部分空间提供并发收集时程序运作使用。要是CMS预留的内存空间不能满足程序的要求，这是JVM就会启动预备方案：临时启动Serial Old收集器来收集老年代，这样停顿的时间就会很长。<br>由于CMS使用标记–清除算法，所以在收集之后会产生大量内存碎片。当内存碎片过多时，将会给分配大对象带来困难，这是就会进行Full GC。</p>
+<h2 id="4-7-G1收集器"><a href="#4-7-G1收集器" class="headerlink" title="4.7 G1收集器"></a>4.7 G1收集器</h2><p>G1收集器与CMS相比有很大的改进：<br>G1收集器采用标记–整理算法实现。<br>可以非常精确地控制停顿。<br>G1收集器可以实现在基本不牺牲吞吐量的情况下完成低停顿的内存回收，这是由于它极力的避免全区域的回收，G1收集器将Java堆（包括新生代和老年代）划分为多个区域（Region），并在后台维护一个优先列表，每次根据允许的时间，优先回收垃圾最多的区域 。</p>
+
       
     </div>
     
@@ -538,8 +600,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -640,6 +711,22 @@
       </section>
 
       
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-对象已死吗？"><span class="nav-text">1. 对象已死吗？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-引用计数算法"><span class="nav-text">1.1 引用计数算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-可达性分析算法-根搜索算法"><span class="nav-text">1.2 可达性分析算法(根搜索算法)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-再谈引用"><span class="nav-text">1.3 再谈引用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-垃圾回收算法"><span class="nav-text">2. 垃圾回收算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-标记–清除算法"><span class="nav-text">2.1 标记–清除算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-复制回收算法"><span class="nav-text">2.2 复制回收算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-标记–整理算法"><span class="nav-text">2.3 标记–整理算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4-分代回收算法"><span class="nav-text">2.4 分代回收算法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-内存分配和回收策略"><span class="nav-text">3. 内存分配和回收策略</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-垃圾收集器"><span class="nav-text">4. 垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-Serial收集器"><span class="nav-text">4.1 Serial收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-ParNew收集器"><span class="nav-text">4.2 ParNew收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-Parallel-Scavenge收集器"><span class="nav-text">4.3 Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-4-Serial-Old收集器"><span class="nav-text">4.4 Serial Old收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-5-Parallel-Old收集器"><span class="nav-text">4.5 Parallel Old收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-6-CMS-收集器"><span class="nav-text">4.6 CMS 收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-7-G1收集器"><span class="nav-text">4.7 G1收集器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
 
       
 
@@ -689,7 +776,7 @@
 <div class="theme-info">
   <div class="powered-by"></div>
   <i class="fa fa-pencil"></i>
-  <span class="post-count">博客全站共32.8k字</span>
+  <span class="post-count">博客全站共36.3k字</span>
 </div> 
 
 
