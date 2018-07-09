@@ -89,7 +89,7 @@
 
 
 
-  <meta name="keywords" content="JVM," />
+  <meta name="keywords" content="Spring-boot," />
 
 
 
@@ -100,18 +100,24 @@
 
 
 
-<meta name="description" content="深入理解JAVA虚拟机——java代码是如何执行的那？">
-<meta name="keywords" content="JVM">
+<meta name="description" content="在IDEA中简易搭建搭建Spring-boot 2.0.3开发环境 1. 准备 安装IDEA在settings -&amp;gt; Plugins 里面搜索spring boot，勾选上. 安装Maven 安装JDK  2. 创建spring boot项目选择NEW -&amp;gt; Project -&amp;gt; Spring Initializr填写项目名和包名。选择组件自动生成依赖，这里直选web组件选择项目">
+<meta name="keywords" content="Spring-boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="java字节码执行引擎">
-<meta property="og:url" content="http://yoursite.com/2018/07/03/java字节码执行引擎/index.html">
+<meta property="og:title" content="Spring-boot初始化配置">
+<meta property="og:url" content="http://yoursite.com/2018/07/09/Spring-boot初始化配置/index.html">
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
-<meta property="og:description" content="深入理解JAVA虚拟机——java代码是如何执行的那？">
+<meta property="og:description" content="在IDEA中简易搭建搭建Spring-boot 2.0.3开发环境 1. 准备 安装IDEA在settings -&amp;gt; Plugins 里面搜索spring boot，勾选上. 安装Maven 安装JDK  2. 创建spring boot项目选择NEW -&amp;gt; Project -&amp;gt; Spring Initializr填写项目名和包名。选择组件自动生成依赖，这里直选web组件选择项目">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-04T14:48:35.287Z">
+<meta property="og:image" content="https://i.loli.net/2018/07/09/5b4374ca09ab8.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/09/5b4374ca0921f.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/09/5b4374ca0a8c4.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/09/5b4374ca09aaa.png">
+<meta property="og:image" content="https://i.loli.net/2018/07/09/5b4374ca09423.png">
+<meta property="og:updated_time" content="2018-07-09T14:58:34.003Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java字节码执行引擎">
-<meta name="twitter:description" content="深入理解JAVA虚拟机——java代码是如何执行的那？">
+<meta name="twitter:title" content="Spring-boot初始化配置">
+<meta name="twitter:description" content="在IDEA中简易搭建搭建Spring-boot 2.0.3开发环境 1. 准备 安装IDEA在settings -&amp;gt; Plugins 里面搜索spring boot，勾选上. 安装Maven 安装JDK  2. 创建spring boot项目选择NEW -&amp;gt; Project -&amp;gt; Spring Initializr填写项目名和包名。选择组件自动生成依赖，这里直选web组件选择项目">
+<meta name="twitter:image" content="https://i.loli.net/2018/07/09/5b4374ca09ab8.png">
 
 
 
@@ -141,13 +147,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/07/03/java字节码执行引擎/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/09/Spring-boot初始化配置/"/>
 
 
 
 
 
-  <title>java字节码执行引擎 | Tomcat不吃鱼的博客</title>
+  <title>Spring-boot初始化配置 | Tomcat不吃鱼的博客</title>
   
 
 
@@ -310,7 +316,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/03/java字节码执行引擎/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/09/Spring-boot初始化配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Tomcat不吃鱼">
@@ -327,7 +333,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java字节码执行引擎</h1>
+          <h1 class="post-title" itemprop="name headline">Spring-boot初始化配置</h1>
         
 
         <div class="post-meta">
@@ -339,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-03T15:39:23+08:00">
-                2018-07-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-09T17:24:23+08:00">
+                2018-07-09
               </time>
             
 
@@ -362,8 +368,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/java/" itemprop="url" rel="index">
-                    <span itemprop="name">java</span>
+                  <a href="/categories/框架/" itemprop="url" rel="index">
+                    <span itemprop="name">框架</span>
                   </a>
                 </span>
 
@@ -379,7 +385,7 @@
 
           
           
-             <span id="/2018/07/03/java字节码执行引擎/" class="leancloud_visitors" data-flag-title="java字节码执行引擎">
+             <span id="/2018/07/09/Spring-boot初始化配置/" class="leancloud_visitors" data-flag-title="Spring-boot初始化配置">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -405,7 +411,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,490
+                  390
                 </span>
               
 
@@ -421,7 +427,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  9
+                  2
                 </span>
               
             </div>
@@ -442,57 +448,23 @@
       
 
       
-        <div class="note info"><p>深入理解JAVA虚拟机——java代码是如何执行的那？</p></div>
-<a id="more"></a>
-<p>执行引擎在执行JAVA代码的时候可以选择解释执行（通过解释器执行）和编译执行（通过即使编译器产生本地代码执行）其中一种，或两者兼具。</p>
-<h1 id="1-运行时栈帧结构"><a href="#1-运行时栈帧结构" class="headerlink" title="1. 运行时栈帧结构"></a>1. 运行时栈帧结构</h1><p>栈帧(StackFrame)是用于支持虚拟机进行方法调用和方法执行的数据结构，它是虚拟机运行时数据区中的虚拟机栈(VirtualMachine Stack)的栈元素。<strong>栈帧存储了方法的局部变量表，操作数栈，动态连接和方法返回地址等信息</strong>。每一个方法调用的过程，就对应着一个栈帧在虚拟机栈中入栈到出栈的过程。</p>
-<p>一个线程中的方法调用链可能很长，很多方法都同时处于执行状态，对于执行引擎来说，活动线程中，只有栈顶的栈帧是有效的，称为Curent Stack Frame。 这个栈帧所关联的方法称为当前方法(Current Method)。执行引擎所运行的所有字节码指令都只针对当前栈帧进行操作。</p>
-<h2 id="1-1-局部变量表"><a href="#1-1-局部变量表" class="headerlink" title="1.1 局部变量表"></a>1.1 局部变量表</h2><p>局部变量表用于存放方法参数和方法内部定义的局部变量，在编译成CLASS文件时，就在方法的Code属性的max_locals数据项中确定了该方法所需要分配的最大局部变量表的容量。</p>
-<p><strong>虚拟机通过索引定位的方式使用局部变量表</strong>，索引值的范围从0开始到局部变量表最大的SLOT数量。在方法执行时，JVM使用局部变量表完成参数值到参数变量列表的传递过程。<strong>如果是实例方法，那么局部变量表的第0位索引的SLOT默认是用于传递方法所属对象实例的引用</strong>，在方法中可以通过“this”访问到这个隐含的参数。其余参数则按照参数表的顺序排列，参数表分配完毕后，再根据方法体内部定义的变量顺序和作用于分配其余SLOT。</p>
-<p><strong>局部变量表中的SLOT是可以重用的</strong>，如果当前字节码PC计数器的值已经超出了某个变量的作用域，那么这个变量对应的SLOT就可以交给其他变量使用。</p>
-<h2 id="1-2-操作数栈"><a href="#1-2-操作数栈" class="headerlink" title="1.2 操作数栈"></a>1.2 操作数栈</h2><p>操作数栈是一个LIFO栈<strong>。操作数栈的最大深度在编译时写入到Code属性的max_stacks数据项中</strong>。</p>
-<p>操作数栈的每一个元素可以是任意JAVA数据类型，32位数据占栈容量为1，64位占栈容量为2.</p>
-<p>当一个方法开始执行时，这个方法的操作数栈是空的，在方法执行过程中，会有各种字节码指令向操作数栈中写入和提取内容。比如，加法的字节码指令iadd在运行时会将栈顶两个元素相加并出战，再将结果入栈。<strong>在编译器和校验阶段的保证下，操作数栈中元素的数据类型必须与字节码指令的序列严格匹配</strong>。</p>
-<h2 id="1-3-动态连接"><a href="#1-3-动态连接" class="headerlink" title="1.3 动态连接"></a>1.3 动态连接</h2><p>每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用，持有这个引用是为了支持方法调用过程中的动态连接。字节码中的方法调用指令就以常量池中指向方法的符号引用为参数。<strong>这些符号引用一部分会在类加载阶段或第一次使用的时候转换为直接引用，成为静态解析，另一部分会在每一次运行时转换为直接引用，成为动态连接</strong>。</p>
-<h2 id="1-4-方法返回地址"><a href="#1-4-方法返回地址" class="headerlink" title="1.4 方法返回地址"></a>1.4 方法返回地址</h2><p>有两种方式退出当前执行的方法，一是执行引擎<strong>遇到任意一个方法返回的字节码指令</strong>，这种方法称为正常完成出口。二是在方法执行过程中<strong>遇到无法处理的异常</strong>，这种方法称为异常完成出口。</p>
-<p>无论哪种方法，方法退出后，都需要返回到调用者的位置，正常退出时，调用者的PC计数器值可以作为返回地址，栈帧中很可能会保存这个计数器值，而异常退出时，返回地址要通过异常处理器表来确定。</p>
-<p><strong>方法退出的过程实际上是将当前栈帧出战，并恢复上层方法的局部变量表和操作数栈，把返回值压入调用者的操作数栈中</strong>。</p>
-<h2 id="1-5-附加信息"><a href="#1-5-附加信息" class="headerlink" title="1.5 附加信息"></a>1.5 附加信息</h2><p>虚拟机规范允许虚拟机添加一些附加信息到栈帧中。</p>
-<h1 id="2-方法调用"><a href="#2-方法调用" class="headerlink" title="2. 方法调用"></a>2. 方法调用</h1><p><strong>方法调用不等于方法执行，其唯一的任务就是确定调用哪一个具体方法。</strong></p>
-<h2 id="2-1-解析"><a href="#2-1-解析" class="headerlink" title="2.1 解析"></a>2.1 解析</h2><p>所有方法调用中的目标方法在Class文件里面都是一个常量池中的符号引用，而不是方法在实际运行时内存布局中的入口地址。</p>
-<p>在类加载的解析阶段，一部分符号引用会被转化为直接引用，这种解析成立的前提是：<strong>方法在程序真正运行之前就有一个可确定的调用版本，且这个方法的调用版本在运行时是不可改变的</strong>（“编译期可知，运行期不可变”），这类方法的调用称为解析。</p>
-<p>JVM提供了4条方法调用的字节码指令：</p>
-<ul>
-<li><p>invokestatic:调用静态方法</p>
-</li>
-<li><p>invokespecial:调用实例构造器<init>方法，私有方法和父类方法</init></p>
-</li>
-<li><p>invokevirtual:调用所有的虚方法</p>
-</li>
-<li><p>invokeinterface:调用接口方法，会在运行时再确定一个实现此接口的对象。</p>
-</li>
-<li>invokedynamic：先在运行时动态解析出调用点限定符所引用的方法，然后再执行该方法， 在此之前的4条调用指令，分派逻辑是固化在Java虚拟机内部的，而invokedynamic指令的分派逻辑是由用户所设定的引导方法决定的。</li>
+        <div class="note info"><p>在IDEA中简易搭建搭建Spring-boot 2.0.3开发环境</p></div>
+<h1 id="1-准备"><a href="#1-准备" class="headerlink" title="1. 准备"></a>1. 准备</h1><ul>
+<li>安装IDEA<br>在settings -&gt; Plugins 里面搜索spring boot，勾选上.</li>
+<li>安装Maven</li>
+<li>安装JDK</li>
 </ul>
-<p>被invokestatic和invokespecial调用的方法，以及final修饰的方法（虽然是invokevirtual指令调用）被称为非虚方法，都可以在解析阶段确定唯一的调用版本，这些方法的调用就是解析。</p>
-<h2 id="2-2-分派"><a href="#2-2-分派" class="headerlink" title="2.2 分派"></a>2.2 分派</h2><p>分派 (Dispatch）调用可能是静态的也可能是动态的，根据分报依据的宗量数e可分为单分派和多分派。 </p>
-<h3 id="2-2-1-静态分派"><a href="#2-2-1-静态分派" class="headerlink" title="2.2.1 静态分派"></a>2.2.1 静态分派</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Human man =<span class="keyword">new</span> Man();</span><br></pre></td></tr></table></figure>
-<p>Human被称为静态类型，Man称为实际类型。</p>
-<p>静态分派的最典型应用就是方法重载。虚拟机（编译器）重载时通过参数的静态类型作为判断依据。所有依赖静态类型来定位方法执行版本的分派动作，都称为静态分派。</p>
-<p>在重载的情况下，由于字面量不需要定义，所以字面量没有显示的静态类型，所以很多时候重载版本并不是唯一的，而是寻找一个最合适的版本。</p>
-<h3 id="2-2-2-动态分派"><a href="#2-2-2-动态分派" class="headerlink" title="2.2.2 动态分派"></a>2.2.2 动态分派</h3><p>动态分派的最典型应用就是方法重写（override。</p>
-<p><strong>方法重写中实际类型对于具体调用哪个方法起决定性作用</strong>，在运行期间根据实际类型确定方法执行版本的分派动作，都称为动态分派。</p>
-<p>invokevirtual指令的运行时解析过程大致分为以下几个步骤：</p>
-<ul>
-<li>找到操作数栈顶的第一个元素所指向的对象的实际类型，记作C。</li>
-<li>如果在类型C中找到与常量中的描述符和简单名称都相符的方法，则进行访问权限教研，如果通过则返回这个方法的直接引用，查找结束。</li>
-<li>否则，依照继承关系从下往上依次对C的各个父类进行第2步的搜索和验证过程。</li>
-<li>如果始终没有找到合适的方法，则抛出 异常。</li>
-</ul>
-<h3 id="2-2-3-单分派和多分派"><a href="#2-2-3-单分派和多分派" class="headerlink" title="2.2.3 单分派和多分派"></a>2.2.3 单分派和多分派</h3><p>动态分派是单分派，静态分派是多分派。</p>
-<h3 id="2-2-4-虚拟机动态分派的实现"><a href="#2-2-4-虚拟机动态分派的实现" class="headerlink" title="2.2.4 虚拟机动态分派的实现"></a>2.2.4 虚拟机动态分派的实现</h3><p>由于动态分派是非常频繁的操作，因此在JVM具体实现中基于性能考虑，常常 做一些优化，最初用的“稳定优化”手段就是为类在方法去中建立一个虚方法表（vtable），于此对应，invokeinterface执行时也会用到接口方发表。</p>
-<p>虚方法表中存放着各个方法的实际入口地址，<strong>如果某个方法在子类中没有被重写，那么子类的虚方法表里的地址入口和父类相同方法的地址入口是一致的。如果子类重写了这个方法，子类方法表中的地址就会被替换为指向子类实现版本的入口地址</strong>。</p>
-<p>为了程序实现上的方便，具有相同签名的方法，在父类、子类的虚方发表中都应当具有一样的索引序号，这样当类型变换时，仅需要变更要查找的方法表即可。方法表一般在类加载的连接阶段进行初始化，准备了类的变量初始值后，虚拟机会把该类的方法表也初始化完毕。</p>
-<h1 id="3-基于栈的字节码解释执行引擎"><a href="#3-基于栈的字节码解释执行引擎" class="headerlink" title="3. 基于栈的字节码解释执行引擎"></a>3. 基于栈的字节码解释执行引擎</h1><p>Java编译器输出的指令流，基本上是一种基于栈的指令集架构，与之对应的是寄存器指令集架构。基于栈的指令集主要的优点是可移植性。而寄存器由硬件直接提供，程序直接依赖这些硬件寄存器则不可避免地受到硬件的约束。</p>
+<h1 id="2-创建spring-boot项目"><a href="#2-创建spring-boot项目" class="headerlink" title="2. 创建spring boot项目"></a>2. 创建spring boot项目</h1><p>选择<code>NEW -&gt; Project -&gt; Spring Initializr</code><br><img src="https://i.loli.net/2018/07/09/5b4374ca09ab8.png" alt="2018-07-09_17-41-30.png"><br>填写项目名和包名。<br><img src="https://i.loli.net/2018/07/09/5b4374ca0921f.png" alt="2018-07-09_17-41-51.png"><br>选择组件自动生成依赖，这里直选web组件<br><img src="https://i.loli.net/2018/07/09/5b4374ca0a8c4.png" alt="2018-07-09_17-42-16.png"><br>选择项目路径，完成创建。<br><img src="https://i.loli.net/2018/07/09/5b4374ca09aaa.png" alt="2018-07-09_17-42-26.png"></p>
+<h1 id="3-初始化项目文件"><a href="#3-初始化项目文件" class="headerlink" title="3. 初始化项目文件"></a>3. 初始化项目文件</h1><p><img src="https://i.loli.net/2018/07/09/5b4374ca09423.png" alt="2018-07-09_17-53-27.png"></p>
+<h2 id="3-1-pom-xml"><a href="#3-1-pom-xml" class="headerlink" title="3.1 pom.xml"></a>3.1 pom.xml</h2><p>IDEA已经根据我们的选择添加了一些依赖，这里只用添加configuration-processor依赖，这是2.0版本后要求的读取自定义配置所用的依赖包。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-configuration-processor<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">optional</span>&gt;</span>true<span class="tag">&lt;/<span class="name">optional</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-2-application-yml"><a href="#3-2-application-yml" class="headerlink" title="3.2 application.yml"></a>3.2 application.yml</h2><p>spring boot项目的主配置文件，配置数据库，日志，连接池等组件功能都在这里配置。先简单使用下。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">student: #自定义的属性和值</span><br><span class="line">  name: 武翱</span><br><span class="line">  year: 26</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-Student-java"><a href="#3-4-Student-java" class="headerlink" title="3.4 Student.java"></a>3.4 Student.java</h2><p>bean类，这里用来存储自定义对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="meta">@ConfigurationProperties</span>(prefix=<span class="string">"student"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> String year;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getYear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> year;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setYear</span><span class="params">(String year)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.year = year;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-3-HelloController-java"><a href="#3-3-HelloController-java" class="headerlink" title="3.3 HelloController.java"></a>3.3 HelloController.java</h2><p>Controller类，对请求的url进行控制。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloController</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> Student student;</span><br><span class="line">    <span class="meta">@RequestMapping</span>(<span class="string">"/hello"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> Student <span class="title">hello</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> student;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-4-SpringbootApplication-java"><a href="#3-4-SpringbootApplication-java" class="headerlink" title="3.4 SpringbootApplication.java"></a>3.4 SpringbootApplication.java</h2><p>spring-boot的主程序，已自动生成，在这里不用做过多配置。运行主程序启动spring-boot，访问localhost:8080/test/hello。</p>
 
       
     </div>
@@ -510,7 +482,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JVM/" rel="tag"><i class="fa fa-tag"></i> JVM</a>
+            <a href="/tags/Spring-boot/" rel="tag"><i class="fa fa-tag"></i> Spring-boot</a>
           
         </div>
       
@@ -523,8 +495,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/02/java垃圾回收机制/" rel="next" title="java垃圾回收机制">
-                <i class="fa fa-chevron-left"></i> java垃圾回收机制
+              <a href="/2018/07/03/java字节码执行引擎/" rel="next" title="java字节码执行引擎">
+                <i class="fa fa-chevron-left"></i> java字节码执行引擎
               </a>
             
           </div>
@@ -533,8 +505,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/07/09/Spring-boot初始化配置/" rel="prev" title="Spring-boot初始化配置">
-                Spring-boot初始化配置 <i class="fa fa-chevron-right"></i>
+              <a href="/22018/07/05/Maven的安装和配置/" rel="prev" title="Maven的安装和配置">
+                Maven的安装和配置 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -712,7 +684,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-运行时栈帧结构"><span class="nav-text">1. 运行时栈帧结构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1-局部变量表"><span class="nav-text">1.1 局部变量表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2-操作数栈"><span class="nav-text">1.2 操作数栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-3-动态连接"><span class="nav-text">1.3 动态连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-4-方法返回地址"><span class="nav-text">1.4 方法返回地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-5-附加信息"><span class="nav-text">1.5 附加信息</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-方法调用"><span class="nav-text">2. 方法调用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-解析"><span class="nav-text">2.1 解析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-分派"><span class="nav-text">2.2 分派</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-1-静态分派"><span class="nav-text">2.2.1 静态分派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-2-动态分派"><span class="nav-text">2.2.2 动态分派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-3-单分派和多分派"><span class="nav-text">2.2.3 单分派和多分派</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-4-虚拟机动态分派的实现"><span class="nav-text">2.2.4 虚拟机动态分派的实现</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-基于栈的字节码解释执行引擎"><span class="nav-text">3. 基于栈的字节码解释执行引擎</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-准备"><span class="nav-text">1. 准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-创建spring-boot项目"><span class="nav-text">2. 创建spring boot项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-初始化项目文件"><span class="nav-text">3. 初始化项目文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-pom-xml"><span class="nav-text">3.1 pom.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-application-yml"><span class="nav-text">3.2 application.yml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-Student-java"><span class="nav-text">3.4 Student.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-HelloController-java"><span class="nav-text">3.3 HelloController.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-4-SpringbootApplication-java"><span class="nav-text">3.4 SpringbootApplication.java</span></a></li></ol></li></ol></div>
             
 
           </div>
