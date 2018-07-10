@@ -100,18 +100,18 @@
 
 
 
-<meta name="description" content="在Window环境下安装Maven 1. 安装maven的安装是通过解压的方式进行的。在官网下载    apache-maven-X.X.X-bin.zip文件进行解压,得到apache-maven-X.X.X。 2. 配置本地仓库打开安装路径下apache-maven-X.X.X\conf\settings.xml文件,搜索localRepository修改为如下代码，路径为自定义本地仓库地址，">
+<meta name="description" content="在Window环境下安装Maven">
 <meta name="keywords" content="Maven">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven的安装和配置">
 <meta property="og:url" content="http://yoursite.com/22018/07/05/Maven的安装和配置/index.html">
 <meta property="og:site_name" content="Tomcat不吃鱼的博客">
-<meta property="og:description" content="在Window环境下安装Maven 1. 安装maven的安装是通过解压的方式进行的。在官网下载    apache-maven-X.X.X-bin.zip文件进行解压,得到apache-maven-X.X.X。 2. 配置本地仓库打开安装路径下apache-maven-X.X.X\conf\settings.xml文件,搜索localRepository修改为如下代码，路径为自定义本地仓库地址，">
+<meta property="og:description" content="在Window环境下安装Maven">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-09T11:40:57.538Z">
+<meta property="og:updated_time" content="2018-07-10T14:15:08.628Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven的安装和配置">
-<meta name="twitter:description" content="在Window环境下安装Maven 1. 安装maven的安装是通过解压的方式进行的。在官网下载    apache-maven-X.X.X-bin.zip文件进行解压,得到apache-maven-X.X.X。 2. 配置本地仓库打开安装路径下apache-maven-X.X.X\conf\settings.xml文件,搜索localRepository修改为如下代码，路径为自定义本地仓库地址，">
+<meta name="twitter:description" content="在Window环境下安装Maven">
 
 
 
@@ -443,6 +443,7 @@
 
       
         <div class="note info"><p>在Window环境下安装Maven</p></div>
+<a id="more"></a>
 <h1 id="1-安装"><a href="#1-安装" class="headerlink" title="1. 安装"></a>1. 安装</h1><p>maven的安装是通过解压的方式进行的。在<a href="http://maven.apache.org/download.cgi" target="_blank" rel="noopener">官网</a>下载    apache-maven-X.X.X-bin.zip文件进行解压,得到apache-maven-X.X.X。</p>
 <h1 id="2-配置本地仓库"><a href="#2-配置本地仓库" class="headerlink" title="2. 配置本地仓库"></a>2. 配置本地仓库</h1><p>打开安装路径下<code>apache-maven-X.X.X\conf\settings.xml</code>文件,搜索<code>localRepository</code>修改为如下代码，路径为自定义本地仓库地址，记得创建文件夹。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- localRepository</span></span><br><span class="line"><span class="comment">  | The path to the local repository maven will use to store artifacts.</span></span><br><span class="line"><span class="comment">  |</span></span><br><span class="line"><span class="comment">  | Default: $&#123;user.home&#125;/.m2/repository</span></span><br><span class="line"><span class="comment"> &lt;localRepository&gt;/path/to/local/repo&lt;/localRepository&gt;</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven-repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br></pre></td></tr></table></figure>
